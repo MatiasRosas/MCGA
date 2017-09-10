@@ -159,10 +159,10 @@ namespace ASF.Data
         }
 
         /// <summary>
-        /// Crea un nuevo Cliente desde un Datareader.
+        /// Crea un nuevo Product desde un Datareader.
         /// </summary>
         /// <param name="dr">Objeto DataReader.</param>
-        /// <returns>Retorna un objeto Cliente.</returns>		
+        /// <returns>Retorna un objeto Product.</returns>		
         private static Product LoadProduct(IDataReader dr)
         {
             var product = new Product
