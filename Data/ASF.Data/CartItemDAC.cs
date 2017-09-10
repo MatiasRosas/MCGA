@@ -20,7 +20,7 @@ namespace ASF.Data
     /// <summary>
     /// 
     /// </summary>
-    class CartItemDAC : DataAccessComponent
+    public class CartItemDAC : DataAccessComponent
     {
 
         /// <summary>

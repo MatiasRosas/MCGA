@@ -17,7 +17,7 @@ using ASF.Entities;
 
 namespace ASF.Data
 {
-    class OrderNumberDAC : DataAccessComponent
+    public class OrderNumberDAC : DataAccessComponent
     {
 
         /// <summary>

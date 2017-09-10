@@ -17,7 +17,7 @@ using ASF.Entities;
 
 namespace ASF.Data
 {
-    class CountryDAC : DataAccessComponent
+    public class CountryDAC : DataAccessComponent
     {
 
         /// <summary>

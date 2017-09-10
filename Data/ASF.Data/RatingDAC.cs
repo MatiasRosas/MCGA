@@ -17,7 +17,7 @@ using ASF.Entities;
 
 namespace ASF.Data
 {
-    class RatingDAC : DataAccessComponent
+    public class RatingDAC : DataAccessComponent
     {
 
         /// <summary>

@@ -18,7 +18,7 @@ using ASF.Entities;
 
 namespace ASF.Data
 {
-    class DealerDAC : DataAccessComponent
+    public class DealerDAC : DataAccessComponent
     {
 
         /// <summary>

@@ -24,5 +24,17 @@ namespace ASF.UI.Process
             var response = HttpGet<AllResponse>("rest/Category/All", new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public Category Find(int id)
+        {
+            var path = "rest/Category/All/" /*+ id.ToString*/;
+            var response = HttpGet<FindResponse>(path, new Dictionary<string, object>(), MediaType.Json);
+            return response.Result;
+        }
+
     }
 }

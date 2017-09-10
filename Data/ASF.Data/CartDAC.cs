@@ -17,7 +17,7 @@ using ASF.Entities;
 
 namespace ASF.Data
 {
-    class CartDAC : DataAccessComponent
+    public class CartDAC : DataAccessComponent
     {
 
         /// <summary>
