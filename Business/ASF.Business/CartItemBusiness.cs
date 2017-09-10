@@ -10,25 +10,23 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using ASF.Entities;
 using ASF.Data;
-
-
 namespace ASF.Business
 {
     /// <summary>
-    /// CartBusiness business component.
+    /// CartItemBusiness business component.
     /// </summary>
-    public class CartBusiness
+    public class CartItemBusiness
     {
 
         /// <summary>
         /// Add method. 
         /// </summary>
-        /// <param name="cart"></param>
+        /// <param name="cartItem"></param>
         /// <returns></returns>
-        public Cart Add(Cart cart)
+        public CartItem Add(CartItem cartItem)
         {
-            var cartDac = new CartDAC();
-            return cartDac.Create(cart);
+            var cartItemDac = new CartItemDAC();
+            return cartItemDac.Create(cartItem);
         }
 
         /// <summary>
@@ -37,18 +35,18 @@ namespace ASF.Business
         /// <param name="id"></param>
         public void Remove(int id)
         {
-            var cartDac = new CartDAC();
-            cartDac.DeleteById(id);
+            var cartItemDac = new CartItemDAC();
+            cartItemDac.DeleteById(id);
         }
 
         /// <summary>
         /// FindAll method.
         /// </summary>
         /// <returns></returns>
-        public List<Cart> All()
+        public List<CartItem> All()
         {
-            var cartDac = new CartDAC();
-            var result = cartDac.Select();
+            var cartItemDac = new CartItemDAC();
+            var result = cartItemDac.Select();
             return result;
         }
 
@@ -57,21 +55,21 @@ namespace ASF.Business
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Cart Find(int id)
+        public CartItem Find(int id)
         {
-            var cartDac = new CartDAC();
-            var result = cartDac.SelectById(id);
+            var cartItemDac = new CartItemDAC();
+            var result = cartItemDac.SelectById(id);
             return result;
         }
 
         /// <summary>
         /// Update method.
         /// </summary>
-        /// <param name="cart"></param>
-        public void Edit(Cart cart)
+        /// <param name="cartItem"></param>
+        public void Edit(CartItem cartItem)
         {
-            var cartDac = new CartDAC();
-            cartDac.UpdateById(cart);
+            var cartItemDac = new CartItemDAC();
+            cartItemDac.UpdateById(cartItem);
         }
 
     }
