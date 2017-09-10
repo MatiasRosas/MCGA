@@ -49,6 +49,7 @@
     <Compile Include="OrderBusiness.cs" />
     <Compile Include="OrderDetailBusiness.cs" />
     <Compile Include="OrderNumberBusiness.cs" />
+    <Compile Include="ProductBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
