@@ -27,8 +27,8 @@ namespace ASF.Data
         /// <returns></returns>
         public Cart Create(Cart cart)
         {
-            const string sqlStatement = "INSERT INTO dbo.Cart ([Cookie], [CartDate], [ItemCount], [Rowid], [OrderCount], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
-                "VALUES(@Cookie, @CartDate, @ItemCount, @Rowid, @OrderCount, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
+            const string sqlStatement = "INSERT INTO dbo.Cart ([Cookie], [CartDate], [ItemCount], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
+                "VALUES(@Cookie, @CartDate, @ItemCount, @Rowid, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
@@ -59,7 +59,6 @@ namespace ASF.Data
                     "[CartDate]=,@CartDate " +
                     "[ItemCount]=,@ItemCount " +
                     "[Rowid]=,@Rowid " +
-                    "[OrderCount]=,@OrderCount " +
                     "[CreatedOn]=@CreatedOn, " +
                     "[CreatedBy]=@CreatedBy, " +
                     "[ChangedOn]=@ChangedOn, " +
@@ -104,7 +103,7 @@ namespace ASF.Data
         /// <returns></returns>
         public Cart SelectById(int id)
         {
-            const string sqlStatement = "SELECT [Id], [Cookie], [CartDate], [ItemCount], [Rowid], [OrderCount], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
+            const string sqlStatement = "SELECT [Id], [Cookie], [CartDate], [ItemCount], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
                 "FROM dbo.Cart WHERE [Id]=@Id ";
 
             Cart cart = null;
@@ -128,7 +127,7 @@ namespace ASF.Data
         public List<Cart> Select()
         {
             // WARNING! Performance
-            const string sqlStatement = "SELECT [Id], [Cookie], [CartDate], [ItemCount], [Rowid], [OrderCount], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] FROM dbo.Client ";
+            const string sqlStatement = "SELECT [Id], [Cookie], [CartDate], [ItemCount], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] FROM dbo.Cart ";
 
             var result = new List<Cart>();
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
