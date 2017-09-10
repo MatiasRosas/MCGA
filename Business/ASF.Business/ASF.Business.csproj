@@ -51,6 +51,7 @@
     <Compile Include="OrderNumberBusiness.cs" />
     <Compile Include="ProductBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RatingBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\ASF.Data\ASF.Data.csproj">
