@@ -32,46 +32,46 @@ namespace ASF.Business
         }
 
         /// <summary>
-        /// 
+        /// Delete method.
         /// </summary>
         /// <param name="id"></param>
         public void Remove(int id)
         {
-            var categoryDac = new CategoryDac();
-            categoryDac.DeleteById(id);
+            var cartDac = new CartDAC();
+            cartDac.DeleteById(id);
         }
 
         /// <summary>
-        /// 
+        /// FindAll method.
         /// </summary>
         /// <returns></returns>
-        public List<Category> All()
+        public List<Cart> All()
         {
-            var categoryDac = new CategoryDac();
-            var result = categoryDac.Select();
+            var cartDac = new CartDAC();
+            var result = cartDac.Select();
             return result;
         }
 
         /// <summary>
-        /// 
+        /// Find method.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Category Find(int id)
+        public Cart Find(int id)
         {
-            var categoryDac = new CategoryDac();
-            var result = categoryDac.SelectById(id);
+            var cartDac = new CartDAC();
+            var result = cartDac.SelectById(id);
             return result;
         }
 
         /// <summary>
-        /// 
+        /// Update method.
         /// </summary>
-        /// <param name="category"></param>
-        public void Edit(Category category)
+        /// <param name="cart"></param>
+        public void Edit(Cart cart)
         {
-            var categoryDac = new CategoryDac();
-            categoryDac.UpdateById(category);
+            var cartDac = new CartDAC();
+            cartDac.UpdateById(cart);
         }
 
     }
