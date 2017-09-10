@@ -23,7 +23,7 @@ namespace ASF.Data
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="category"></param>
+        /// <param name="client"></param>
         /// <returns></returns>
         public Client Create(Client client)
         {
