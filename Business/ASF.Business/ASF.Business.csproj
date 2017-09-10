@@ -47,6 +47,7 @@
     <Compile Include="CountryBusiness.cs" />
     <Compile Include="DealerBusiness.cs" />
     <Compile Include="OrderBusiness.cs" />
+    <Compile Include="OrderDetailBusiness.cs" />
     <Compile Include="OrderNumberBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
