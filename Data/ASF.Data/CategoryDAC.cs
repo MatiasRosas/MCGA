@@ -29,17 +29,14 @@ namespace ASF.Data
         /// <returns></returns>
         public Category Create(Category category)
         {
-            const string sqlStatement ="INSERT INTO dbo.Category ([Name], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
-                "VALUES(@Name, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
+            const string sqlStatement ="INSERT INTO dbo.Category ([Name], [CreatedBy]) " +
+                "VALUES(@Name, @CreatedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
             {
                 db.AddInParameter(cmd, "@Name", DbType.String, category.Name);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, category.CreatedOn);
                 db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, category.CreatedBy);
-                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, category.ChangedOn);
-                db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, category.ChangedBy);
                 // Obtener el valor de la primary key.
                 category.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
             }
@@ -55,8 +52,6 @@ namespace ASF.Data
         {
             const string sqlStatement = "UPDATE dbo.Category " +
                 "SET [Name]=@Name, " +
-                    "[CreatedOn]=@CreatedOn, " +
-                    "[CreatedBy]=@CreatedBy, " +
                     "[ChangedOn]=@ChangedOn, " +
                     "[ChangedBy]=@ChangedBy " +
                 "WHERE [Id]=@Id ";
@@ -65,8 +60,6 @@ namespace ASF.Data
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
             {
                 db.AddInParameter(cmd, "@Name", DbType.String, category.Name);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, category.CreatedOn);
-                db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, category.CreatedBy);
                 db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, category.ChangedOn);
                 db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, category.ChangedBy);
                 db.AddInParameter(cmd, "@Id", DbType.Int32, category.Id);

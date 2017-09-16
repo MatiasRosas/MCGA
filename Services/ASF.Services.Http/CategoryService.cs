@@ -74,6 +74,7 @@ namespace ASF.Services.Http
             try
             {
                 var bc = new CategoryBusiness();
+                category.ChangedOn = System.DateTime.Now;
                 bc.Edit(category);
             }
             catch (Exception ex)
