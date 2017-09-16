@@ -20,6 +20,16 @@ namespace ASF.Services.Contracts
     {
         [DataMember]
         public List<Category> Result { get; set; }
+
+        //[DataMember]
+        //public List<Country> ResultCountry { get; set; }
+    }
+
+    [DataContract]
+    public class AllResponseCountry
+    {
+        [DataMember]
+        public List<Country> Result { get; set; }
     }
 }
 
