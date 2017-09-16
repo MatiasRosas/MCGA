@@ -94,7 +94,7 @@ namespace ASF.Data
         /// <returns></returns>
         public Country SelectById(int id)
         {
-            const string sqlStatement = "SELECT [Name], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
+            const string sqlStatement = "SELECT [Id], [Name], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
                 "FROM dbo.Country WHERE [Id]=@Id ";
 
             Country country = null;

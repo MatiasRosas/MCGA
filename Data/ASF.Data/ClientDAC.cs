@@ -27,8 +27,8 @@ namespace ASF.Data
         /// <returns></returns>
         public Client Create(Client client)
         {
-            const string sqlStatement = "INSERT INTO dbo.Client ([FirstName], [LastName], [Email], [CountryId], [AspNetUsers], [City], [SignupDate], [Rowid], [OrderCount], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
-                "VALUES(@FirstName, @LastName, @Email, @CountryId, @AspNetUsers, @City, @SignupDate, @Rowid, @OrderCount, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
+            const string sqlStatement = "INSERT INTO dbo.Client ([FirstName], [LastName], [Email], [CountryId], [AspNetUsers], [City], [OrderCount], [CreatedBy], [ChangedBy]) " +
+                "VALUES(@FirstName, @LastName, @Email, @CountryId, @AspNetUsers, @City, @OrderCount, @CreatedBy, @ChangedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
@@ -39,12 +39,8 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@CountryId", DbType.Int32, client.CountryId);
                 db.AddInParameter(cmd, "@AspNetUsers", DbType.String, client.AspNetUsers);
                 db.AddInParameter(cmd, "@City", DbType.String, client.City);
-                db.AddInParameter(cmd, "@SignupDate", DbType.DateTime2, client.SignupDate);
-                db.AddInParameter(cmd, "@Rowid", DbType.Guid, client.Rowid);
                 db.AddInParameter(cmd, "@OrderCount", DbType.Int32, client.OrderCount);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, client.CreatedOn);
                 db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, client.CreatedBy);
-                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, client.ChangedOn);
                 db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, client.ChangedBy);
                 // Obtener el valor de la primary key.
                 client.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
@@ -61,14 +57,14 @@ namespace ASF.Data
         {
             const string sqlStatement = "UPDATE dbo.Client " +
                 "SET [FirstName]=@FirstName, " +
-                    "[LastName]=,@LastName " +
-                    "[Email]=,@Email " +
-                    "[CountryId]=,@CountryId " +
-                    "[AspNetUsers]=,@AspNetUsers " +
-                    "[City]=,@City " +
-                    "[SignupDate]=,@SignupDate " +
-                    "[Rowid]=,@Rowid " +
-                    "[OrderCount]=,@OrderCount " +
+                    "[LastName]=@LastName, " +
+                    "[Email]=@Email, " +
+                    "[CountryId]=@CountryId, " +
+                    "[AspNetUsers]=@AspNetUsers, " +
+                    "[City]=@City, " +
+                    "[SignupDate]=@SignupDate, " +
+                    "[Rowid]=@Rowid, " +
+                    "[OrderCount]=@OrderCount, " +
                     "[CreatedOn]=@CreatedOn, " +
                     "[CreatedBy]=@CreatedBy, " +
                     "[ChangedOn]=@ChangedOn, " +
@@ -91,6 +87,7 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, client.CreatedBy);
                 db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, client.ChangedOn);
                 db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, client.ChangedBy);
+                db.AddInParameter(cmd, "@Id", DbType.Int32, client.Id);
 
                 db.ExecuteNonQuery(cmd);
             }

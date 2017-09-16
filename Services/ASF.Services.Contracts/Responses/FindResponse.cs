@@ -31,5 +31,12 @@ namespace ASF.Services.Contracts
         [DataMember]
         public Country Result { get; set; }
     }
+
+    [DataContract]
+    public class FindResponseClient
+    {
+        [DataMember]
+        public Client Result { get; set; }
+    }
 }
 
