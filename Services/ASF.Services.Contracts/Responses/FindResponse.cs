@@ -38,5 +38,12 @@ namespace ASF.Services.Contracts
         [DataMember]
         public Client Result { get; set; }
     }
+
+    [DataContract]
+    public class FindResponseDealer
+    {
+        [DataMember]
+        public Dealer Result { get; set; }
+    }
 }
 

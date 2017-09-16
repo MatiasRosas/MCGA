@@ -243,6 +243,8 @@
     <Compile Include="Areas\Clients\Controllers\ClientController.cs" />
     <Compile Include="Areas\Countries\Controllers\CountryController.cs" />
     <Compile Include="Areas\Countries\CountriesAreaRegistration.cs" />
+    <Compile Include="Areas\Dealers\Controllers\DealerController.cs" />
+    <Compile Include="Areas\Dealers\DealersAreaRegistration.cs" />
     <Compile Include="Constants\ExtensionMethods\HtmlLabelExtensions.cs" />
     <Compile Include="Constants\ExtensionMethods\TypeFactory.cs" />
     <Compile Include="Constants\ExtensionMethods\WebGridExtensions.cs" />
@@ -431,6 +433,14 @@
     <Content Include="Areas\Clients\Views\Client\Create.cshtml" />
     <Content Include="Areas\Clients\Views\Client\Delete.cshtml" />
     <Content Include="Areas\Clients\Views\Client\Edit.cshtml" />
+    <Content Include="Areas\Dealers\Views\web.config" />
+    <Content Include="Areas\Dealers\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Dealers\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Dealers\Views\Dealer\Index.cshtml" />
+    <Content Include="Areas\Dealers\Views\Dealer\Details.cshtml" />
+    <Content Include="Areas\Dealers\Views\Dealer\Create.cshtml" />
+    <Content Include="Areas\Dealers\Views\Dealer\Delete.cshtml" />
+    <Content Include="Areas\Dealers\Views\Dealer\Edit.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -587,6 +597,7 @@
     <Folder Include="Areas\Categories\Models\" />
     <Folder Include="Areas\Clients\Models\" />
     <Folder Include="Areas\Countries\Models\" />
+    <Folder Include="Areas\Dealers\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
