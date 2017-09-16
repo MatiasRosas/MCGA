@@ -237,6 +237,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Carts\CartsAreaRegistration.cs" />
+    <Compile Include="Areas\Carts\Controllers\CartController.cs" />
     <Compile Include="Areas\Categories\CategoriesAreaRegistration.cs" />
     <Compile Include="Areas\Categories\Views\CategoryController.cs" />
     <Compile Include="Areas\Clients\ClientsAreaRegistration.cs" />
@@ -441,6 +443,14 @@
     <Content Include="Areas\Dealers\Views\Dealer\Create.cshtml" />
     <Content Include="Areas\Dealers\Views\Dealer\Delete.cshtml" />
     <Content Include="Areas\Dealers\Views\Dealer\Edit.cshtml" />
+    <Content Include="Areas\Carts\Views\web.config" />
+    <Content Include="Areas\Carts\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Carts\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Carts\Views\Cart\Index.cshtml" />
+    <Content Include="Areas\Carts\Views\Cart\Details.cshtml" />
+    <Content Include="Areas\Carts\Views\Cart\Create.cshtml" />
+    <Content Include="Areas\Carts\Views\Cart\Delete.cshtml" />
+    <Content Include="Areas\Carts\Views\Cart\Edit.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -593,6 +603,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Carts\Models\" />
     <Folder Include="Areas\Categories\Controllers\" />
     <Folder Include="Areas\Categories\Models\" />
     <Folder Include="Areas\Clients\Models\" />

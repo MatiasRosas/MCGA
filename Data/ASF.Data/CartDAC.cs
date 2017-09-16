@@ -27,20 +27,14 @@ namespace ASF.Data
         /// <returns></returns>
         public Cart Create(Cart cart)
         {
-            const string sqlStatement = "INSERT INTO dbo.Cart ([Cookie], [CartDate], [ItemCount], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
-                "VALUES(@Cookie, @CartDate, @ItemCount, @Rowid, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
+            const string sqlStatement = "INSERT INTO dbo.Cart ([Cookie], [CreatedBy]) " +
+                "VALUES(@Cookie, @CreatedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
             {
                 db.AddInParameter(cmd, "@Cookie", DbType.String, cart.Cookie);
-                db.AddInParameter(cmd, "@CartDate", DbType.DateTime2, cart.CartDate);
-                db.AddInParameter(cmd, "@ItemCount", DbType.Int32, cart.ItemCount);
-                db.AddInParameter(cmd, "@Rowid", DbType.Guid, cart.Rowid);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, cart.CreatedOn);
                 db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, cart.CreatedBy);
-                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, cart.ChangedOn);
-                db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, cart.ChangedBy);
                 // Obtener el valor de la primary key.
                 cart.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
             }
@@ -56,11 +50,6 @@ namespace ASF.Data
         {
             const string sqlStatement = "UPDATE dbo.Cart " +
                 "SET [Cookie]=@Cookie, " +
-                    "[CartDate]=,@CartDate " +
-                    "[ItemCount]=,@ItemCount " +
-                    "[Rowid]=,@Rowid " +
-                    "[CreatedOn]=@CreatedOn, " +
-                    "[CreatedBy]=@CreatedBy, " +
                     "[ChangedOn]=@ChangedOn, " +
                     "[ChangedBy]=@ChangedBy " +
                 "WHERE [Id]=@Id ";
@@ -69,14 +58,9 @@ namespace ASF.Data
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
             {
                 db.AddInParameter(cmd, "@Cookie", DbType.String, cart.Cookie);
-                db.AddInParameter(cmd, "@CartDate", DbType.DateTime2, cart.CartDate);
-                db.AddInParameter(cmd, "@ItemCount", DbType.Int32, cart.ItemCount);
-                db.AddInParameter(cmd, "@Rowid", DbType.Guid, cart.Rowid);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, cart.CreatedOn);
-                db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, cart.CreatedBy);
                 db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, cart.ChangedOn);
                 db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, cart.ChangedBy);
-
+                db.AddInParameter(cmd, "@Id", DbType.Int32, cart.Id);
                 db.ExecuteNonQuery(cmd);
             }
         }
