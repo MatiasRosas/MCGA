@@ -75,6 +75,7 @@ namespace ASF.Services.Http
             try
             {
                 var bc = new ClientBusiness();
+                client.ChangedOn = System.DateTime.Now;
                 bc.Edit(client);
             }
             catch (Exception ex)
