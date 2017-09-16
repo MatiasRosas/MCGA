@@ -238,7 +238,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Categories\CategoriesAreaRegistration.cs" />
-    <Compile Include="Areas\Categories\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Categories\Views\CategoryController.cs" />
     <Compile Include="Constants\ExtensionMethods\HtmlLabelExtensions.cs" />
     <Compile Include="Constants\ExtensionMethods\TypeFactory.cs" />
     <Compile Include="Constants\ExtensionMethods\WebGridExtensions.cs" />
@@ -407,6 +407,10 @@
     <Content Include="Areas\Categories\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Categories\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Categories\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Categories\Views\Category\Details.cshtml" />
+    <Content Include="Areas\Categories\Views\Category\Create.cshtml" />
+    <Content Include="Areas\Categories\Views\Category\Delete.cshtml" />
+    <Content Include="Areas\Categories\Views\Category\Edit.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -559,6 +563,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Categories\Controllers\" />
     <Folder Include="Areas\Categories\Models\" />
   </ItemGroup>
   <ItemGroup>

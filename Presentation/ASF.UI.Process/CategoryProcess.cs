@@ -31,10 +31,37 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public Category Find(int id)
         {
-            var path = "rest/Category/All/" /*+ id.ToString*/;
+            var path = "rest/Category/Find/" + id;
             var response = HttpGet<FindResponse>(path, new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+       public void Insert(Category cat)
+        {
+            var response = HttpPost<Category>("rest/Category/Add", cat, MediaType.Json);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public void Delete(int id)
+        {
+            var path = "rest/Category/Remove/" + id;
+            var response = HttpGet<FindResponse>(path, new Dictionary<string, object>(), MediaType.Json);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public void Edit(Category cat)
+        {
+            var response = HttpPost<Category>("rest/Category/Edit", cat, MediaType.Json);
+        }
     }
 }
