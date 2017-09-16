@@ -75,6 +75,7 @@ namespace ASF.Services.Http
             try
             {
                 var bc = new CountryBusiness();
+                country.ChangedOn = System.DateTime.Now;
                 bc.Edit(country);
             }
             catch (Exception ex)

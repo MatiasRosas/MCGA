@@ -27,17 +27,14 @@ namespace ASF.Data
         /// <returns></returns>
         public Country Create(Country country)
         {
-            const string sqlStatement = "INSERT INTO dbo.Country([Name], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
-                "VALUES(@Name, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
+            const string sqlStatement = "INSERT INTO dbo.Country([Name], [CreatedBy]) " +
+                "VALUES(@Name, @CreatedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
             {
                 db.AddInParameter(cmd, "@Name", DbType.String, country.Name);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, country.CreatedOn);
                 db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, country.CreatedBy);
-                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, country.ChangedOn);
-                db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, country.ChangedBy);
                 // Obtener el valor de la primary key.
                 country.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
             }
@@ -53,8 +50,6 @@ namespace ASF.Data
         {
             const string sqlStatement = "UPDATE dbo.Country " +
                 "SET [Name]=@Name, " +
-                    "[CreatedOn]=@CreatedOn, " +
-                    "[CreatedBy]=@CreatedBy, " +
                     "[ChangedOn]=@ChangedOn, " +
                     "[ChangedBy]=@ChangedBy " +
                 "WHERE [Id]=@Id ";
@@ -63,10 +58,9 @@ namespace ASF.Data
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
             {
                 db.AddInParameter(cmd, "@Name", DbType.String, country.Name);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, country.CreatedOn);
-                db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, country.CreatedBy);
                 db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, country.ChangedOn);
                 db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, country.ChangedBy);
+                db.AddInParameter(cmd, "@Id", DbType.Int32, country.Id);
 
                 db.ExecuteNonQuery(cmd);
             }
