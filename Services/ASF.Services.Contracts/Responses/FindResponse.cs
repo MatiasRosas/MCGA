@@ -80,5 +80,12 @@ namespace ASF.Services.Contracts
         [DataMember]
         public OrderNumber Result { get; set; }
     }
+
+    [DataContract]
+    public class FindResponseProduct
+    {
+        [DataMember]
+        public Product Result { get; set; }
+    }
 }
 

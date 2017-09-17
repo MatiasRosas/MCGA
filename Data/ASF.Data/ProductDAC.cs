@@ -27,8 +27,8 @@ namespace ASF.Data
         /// <returns></returns>
         public Product Create(Product product)
         {
-            const string sqlStatement = "INSERT INTO dbo.Product ([Title], [Description], [DealerId], [Image], [Price], [QuantitySold], [AvgStars], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
-                "VALUES(@Title, @Description, @DealerId, @Image, @Price, @QuantitySold, @AvgStars, @Rowid, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
+            const string sqlStatement = "INSERT INTO dbo.Product ([Title], [Description], [DealerId], [Image], [Price], [CreatedBy]) " +
+                "VALUES(@Title, @Description, @DealerId, @Image, @Price, @CreatedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
@@ -38,13 +38,7 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@DealerId", DbType.Int32, product.DealerId);
                 db.AddInParameter(cmd, "@Image", DbType.String, product.Image);
                 db.AddInParameter(cmd, "@Price", DbType.Decimal, product.Price);
-                db.AddInParameter(cmd, "@QuantitySold", DbType.Int32, product.QuantitySold);
-                db.AddInParameter(cmd, "@AvgStars", DbType.Decimal, product.AvgStars);
-                db.AddInParameter(cmd, "@Rowid", DbType.Guid, product.Rowid);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, product.CreatedOn);
                 db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, product.CreatedBy);
-                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, product.ChangedOn);
-                db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, product.ChangedBy);
                 // Obtener el valor de la primary key.
                 product.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
             }
@@ -60,15 +54,11 @@ namespace ASF.Data
         {
             const string sqlStatement = "UPDATE dbo.Product " +
                 "SET [Title]=@Title, " +
-                    "[Description]=,@Description " +
-                    "[DealerId]=,@DealerId " +
-                    "[Image]=,@Image " +
-                    "[Price]=,@Price " +
-                    "[QuantitySold]=,@QuantitySold " +
-                    "[AvgStars]=,@AvgStars " +
-                    "[Rowid]=,@Rowid " +
-                    "[CreatedOn]=@CreatedOn, " +
-                    "[CreatedBy]=@CreatedBy, " +
+                    "[Description]=@Description, " +
+                    "[DealerId]=@DealerId, " +
+                    "[Image]=@Image, " +
+                    "[Price]=@Price, " +
+                    "[QuantitySold]=@QuantitySold, " +
                     "[ChangedOn]=@ChangedOn, " +
                     "[ChangedBy]=@ChangedBy " +
                 "WHERE [Id]=@Id ";
@@ -82,13 +72,9 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@Image", DbType.String, product.Image);
                 db.AddInParameter(cmd, "@Price", DbType.Decimal, product.Price);
                 db.AddInParameter(cmd, "@QuantitySold", DbType.Int32, product.QuantitySold);
-                db.AddInParameter(cmd, "@AvgStars", DbType.Decimal, product.AvgStars);
-                db.AddInParameter(cmd, "@Rowid", DbType.Guid, product.Rowid);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, product.CreatedOn);
-                db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, product.CreatedBy);
                 db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, product.ChangedOn);
                 db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, product.ChangedBy);
-
+                db.AddInParameter(cmd, "@Id", DbType.Int32, product.Id);
                 db.ExecuteNonQuery(cmd);
             }
         }
@@ -172,9 +158,9 @@ namespace ASF.Data
                 Description = GetDataValue<string>(dr, "Description"),
                 DealerId = GetDataValue<int>(dr, "DealerId"),
                 Image = GetDataValue<string>(dr, "Image"),
-                Price = GetDataValue<float>(dr, "Price"),
+                Price = GetDataValue<double>(dr, "Price"),
                 QuantitySold = GetDataValue<int>(dr, "QuantitySold"),
-                AvgStars = GetDataValue<float>(dr, "AvgStars"),
+                AvgStars = GetDataValue<double>(dr, "AvgStars"),
                 Rowid = GetDataValue<Guid>(dr, "Rowid"),
                 CreatedOn = GetDataValue<DateTime>(dr, "CreatedOn"),
                 CreatedBy = GetDataValue<int>(dr, "CreatedBy"),
