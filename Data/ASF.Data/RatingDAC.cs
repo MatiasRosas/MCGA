@@ -27,8 +27,8 @@ namespace ASF.Data
         /// <returns></returns>
         public Rating Create(Rating rating)
         {
-            const string sqlStatement = "INSERT INTO dbo.Rating ([ClientId], [ProductId], [Stars], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
-                "VALUES(@ClientId, @ProductId, @Stars, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
+            const string sqlStatement = "INSERT INTO dbo.Rating ([ClientId], [ProductId], [Stars], [CreatedBy]) " +
+                "VALUES(@ClientId, @ProductId, @Stars, @CreatedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
@@ -36,10 +36,7 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@ClientId", DbType.Int32, rating.ClientId);
                 db.AddInParameter(cmd, "@ProductId", DbType.Int32, rating.ProductId);
                 db.AddInParameter(cmd, "@Stars", DbType.Int32, rating.Stars);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, rating.CreatedOn);
                 db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, rating.CreatedBy);
-                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, rating.ChangedOn);
-                db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, rating.ChangedBy);
                 // Obtener el valor de la primary key.
                 rating.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
             }
@@ -55,10 +52,8 @@ namespace ASF.Data
         {
             const string sqlStatement = "UPDATE dbo.Rating " +
                 "SET [ClientId]=@ClientId, " +
-                    "[ProductId]=,@ProductId " +
-                    "[Stars]=,@Stars " +
-                    "[CreatedOn]=@CreatedOn, " +
-                    "[CreatedBy]=@CreatedBy, " +
+                    "[ProductId]=@ProductId, " +
+                    "[Stars]=@Stars, " +
                     "[ChangedOn]=@ChangedOn, " +
                     "[ChangedBy]=@ChangedBy " +
                 "WHERE [Id]=@Id ";
@@ -69,10 +64,9 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@ClientId", DbType.Int32, rating.ClientId);
                 db.AddInParameter(cmd, "@ProductId", DbType.Int32, rating.ProductId);
                 db.AddInParameter(cmd, "@Stars", DbType.Int32, rating.Stars);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, rating.CreatedOn);
-                db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, rating.CreatedBy);
                 db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, rating.ChangedOn);
                 db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, rating.ChangedBy);
+                db.AddInParameter(cmd, "@Id", DbType.Int32, rating.Id);
 
                 db.ExecuteNonQuery(cmd);
             }

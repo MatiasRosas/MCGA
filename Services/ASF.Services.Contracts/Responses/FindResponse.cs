@@ -87,5 +87,12 @@ namespace ASF.Services.Contracts
         [DataMember]
         public Product Result { get; set; }
     }
+
+    [DataContract]
+    public class FindResponseRating
+    {
+        [DataMember]
+        public Rating Result { get; set; }
+    }
 }
 

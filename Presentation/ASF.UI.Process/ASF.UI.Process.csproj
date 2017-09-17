@@ -57,6 +57,7 @@
     <Compile Include="ProcessComponent.cs" />
     <Compile Include="ProductProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RatingProcess.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Services\ASF.Services.Contracts\ASF.Services.Contracts.csproj">
