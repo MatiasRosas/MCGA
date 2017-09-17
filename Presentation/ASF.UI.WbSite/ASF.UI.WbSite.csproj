@@ -249,6 +249,8 @@
     <Compile Include="Areas\Countries\CountriesAreaRegistration.cs" />
     <Compile Include="Areas\Dealers\Controllers\DealerController.cs" />
     <Compile Include="Areas\Dealers\DealersAreaRegistration.cs" />
+    <Compile Include="Areas\OrderDetails\Controllers\OrderDetailController.cs" />
+    <Compile Include="Areas\OrderDetails\OrderDetailsAreaRegistration.cs" />
     <Compile Include="Areas\Orders\Controllers\OrderController.cs" />
     <Compile Include="Areas\Orders\OrdersAreaRegistration.cs" />
     <Compile Include="Constants\ExtensionMethods\HtmlLabelExtensions.cs" />
@@ -471,6 +473,14 @@
     <Content Include="Areas\Orders\Views\Order\Create.cshtml" />
     <Content Include="Areas\Orders\Views\Order\Delete.cshtml" />
     <Content Include="Areas\Orders\Views\Order\Edit.cshtml" />
+    <Content Include="Areas\OrderDetails\Views\web.config" />
+    <Content Include="Areas\OrderDetails\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\OrderDetails\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\OrderDetails\Views\OrderDetail\Index.cshtml" />
+    <Content Include="Areas\OrderDetails\Views\OrderDetail\Details.cshtml" />
+    <Content Include="Areas\OrderDetails\Views\OrderDetail\Create.cshtml" />
+    <Content Include="Areas\OrderDetails\Views\OrderDetail\Delete.cshtml" />
+    <Content Include="Areas\OrderDetails\Views\OrderDetail\Edit.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -630,7 +640,9 @@
     <Folder Include="Areas\Clients\Models\" />
     <Folder Include="Areas\Countries\Models\" />
     <Folder Include="Areas\Dealers\Models\" />
+    <Folder Include="Areas\OrderDetails\Models\" />
     <Folder Include="Areas\Orders\Models\" />
+    <Folder Include="Areas\Orders\Views\OrderDetail\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

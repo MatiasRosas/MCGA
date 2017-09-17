@@ -66,5 +66,12 @@ namespace ASF.Services.Contracts
         [DataMember]
         public List<Order> Result { get; set; }
     }
+
+    [DataContract]
+    public class AllResponseOrderDetail
+    {
+        [DataMember]
+        public List<OrderDetail> Result { get; set; }
+    }
 }
 

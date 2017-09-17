@@ -26,8 +26,8 @@ namespace ASF.Data
         /// <returns></returns>
         public OrderDetail Create(OrderDetail orderD)
         {
-            const string sqlStatement = "INSERT INTO dbo.OrderDetail([OrderId], [ProductId], [Price], [Quantity], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
-                "VALUES(@OrderId, @ProductId, @Price, @Quantity, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
+            const string sqlStatement = "INSERT INTO dbo.OrderDetail([OrderId], [ProductId], [Price], [Quantity], [CreatedBy]) " +
+                "VALUES(@OrderId, @ProductId, @Price, @Quantity, @CreatedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
@@ -37,8 +37,6 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@Price", DbType.Decimal, orderD.Price);
                 db.AddInParameter(cmd, "@Quantity", DbType.Int32, orderD.Quantity);
                 db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, orderD.CreatedBy);
-                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, orderD.ChangedOn);
-                db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, orderD.ChangedBy);
                 // Obtener el valor de la primary key.
                 orderD.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
             }
@@ -57,8 +55,6 @@ namespace ASF.Data
                     "[ProductId]=@ProductId, " +
                     "[Price]=@Price, " +
                     "[Quantity]=@Quantity, " +
-                    "[CreatedOn]=@CreatedOn, " +
-                    "[CreatedBy]=@CreatedBy, " +
                     "[ChangedOn]=@ChangedOn, " +
                     "[ChangedBy]=@ChangedBy " +
                 "WHERE [Id]=@Id ";
@@ -70,10 +66,9 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@ProductId", DbType.Int32, orderD.ProductId);
                 db.AddInParameter(cmd, "@Price", DbType.Decimal, orderD.Price);
                 db.AddInParameter(cmd, "@Quantity", DbType.Int32, orderD.Quantity);
-                db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, orderD.CreatedBy);
                 db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, orderD.ChangedOn);
                 db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, orderD.ChangedBy);
-
+                db.AddInParameter(cmd, "@Id", DbType.Int32, orderD.Id);
                 db.ExecuteNonQuery(cmd);
             }
         }
@@ -100,7 +95,7 @@ namespace ASF.Data
         /// <returns></returns>
         public OrderDetail SelectById(int id)
         {
-            const string sqlStatement = "SELECT [OrderId], [ProductId], [Price], [Quantity], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
+            const string sqlStatement = "SELECT [Id], [OrderId], [ProductId], [Price], [Quantity], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
                 "FROM dbo.OrderDetail WHERE [Id]=@Id ";
 
             OrderDetail orderD = null;
@@ -155,7 +150,7 @@ namespace ASF.Data
                 Id = GetDataValue<int>(dr, "Id"),
                 OrderId = GetDataValue<int>(dr, "OrderId"),
                 ProductId = GetDataValue<int>(dr, "ProductId"),
-                Price = GetDataValue<float>(dr, "Price"),
+                Price = GetDataValue<double>(dr, "Price"),
                 Quantity = GetDataValue<int>(dr, "Quantity"),
                 CreatedOn = GetDataValue<DateTime>(dr, "CreatedOn"),
                 CreatedBy = GetDataValue<int>(dr, "CreatedBy"),
