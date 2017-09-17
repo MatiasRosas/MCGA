@@ -251,6 +251,8 @@
     <Compile Include="Areas\Dealers\DealersAreaRegistration.cs" />
     <Compile Include="Areas\OrderDetails\Controllers\OrderDetailController.cs" />
     <Compile Include="Areas\OrderDetails\OrderDetailsAreaRegistration.cs" />
+    <Compile Include="Areas\OrderNumbers\Controllers\OrderNumberController.cs" />
+    <Compile Include="Areas\OrderNumbers\OrderNumbersAreaRegistration.cs" />
     <Compile Include="Areas\Orders\Controllers\OrderController.cs" />
     <Compile Include="Areas\Orders\OrdersAreaRegistration.cs" />
     <Compile Include="Constants\ExtensionMethods\HtmlLabelExtensions.cs" />
@@ -481,6 +483,14 @@
     <Content Include="Areas\OrderDetails\Views\OrderDetail\Create.cshtml" />
     <Content Include="Areas\OrderDetails\Views\OrderDetail\Delete.cshtml" />
     <Content Include="Areas\OrderDetails\Views\OrderDetail\Edit.cshtml" />
+    <Content Include="Areas\OrderNumbers\Views\web.config" />
+    <Content Include="Areas\OrderNumbers\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\OrderNumbers\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\OrderNumbers\Views\OrderNumber\Index.cshtml" />
+    <Content Include="Areas\OrderNumbers\Views\OrderNumber\Details.cshtml" />
+    <Content Include="Areas\OrderNumbers\Views\OrderNumber\Create.cshtml" />
+    <Content Include="Areas\OrderNumbers\Views\OrderNumber\Delete.cshtml" />
+    <Content Include="Areas\OrderNumbers\Views\OrderNumber\Edit.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -641,6 +651,7 @@
     <Folder Include="Areas\Countries\Models\" />
     <Folder Include="Areas\Dealers\Models\" />
     <Folder Include="Areas\OrderDetails\Models\" />
+    <Folder Include="Areas\OrderNumbers\Models\" />
     <Folder Include="Areas\Orders\Models\" />
     <Folder Include="Areas\Orders\Views\OrderDetail\" />
   </ItemGroup>

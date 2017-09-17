@@ -18,21 +18,20 @@ using ASF.Services.Contracts;
 namespace ASF.Services.Http
 {
     /// <summary>
-    /// Order HTTP service controller.
+    /// OrderNumber HTTP service controller.
     /// </summary>
-    [RoutePrefix("rest/Order")]
-    public class OrderService : ApiController
+    [RoutePrefix("rest/OrderNumber")]
+    public class OrderNumberService : ApiController
     {
 
         [HttpPost]
         [Route("Add")]
-        public Order Add(Order order)
+        public OrderNumber Add(OrderNumber orderNumber)
         {
             try
             {
-                var bo = new OrderBusiness();
-                order.OrderDate = System.DateTime.Now;
-                return bo.Add(order);
+                var bo = new OrderNumberBusiness();
+                return bo.Add(orderNumber);
             }
             catch (Exception ex)
             {
@@ -48,12 +47,12 @@ namespace ASF.Services.Http
 
         [HttpGet]
         [Route("All")]
-        public AllResponseOrder All()
+        public AllResponseOrderNumber All()
         {
             try
             {
-                var response = new AllResponseOrder();
-                var bo = new OrderBusiness();
+                var response = new AllResponseOrderNumber();
+                var bo = new OrderNumberBusiness();
                 response.Result = bo.All();
                 return response;
             }
@@ -71,13 +70,13 @@ namespace ASF.Services.Http
 
         [HttpPost]
         [Route("Edit")]
-        public void Edit(Order order)
+        public void Edit(OrderNumber orderNumber)
         {
             try
             {
-                var bo = new OrderBusiness();
-                order.ChangedOn = System.DateTime.Now;
-                bo.Edit(order);
+                var bo = new OrderNumberBusiness();
+                orderNumber.ChangedOn = System.DateTime.Now;
+                bo.Edit(orderNumber);
             }
             catch (Exception ex)
             {
@@ -93,12 +92,12 @@ namespace ASF.Services.Http
 
         [HttpGet]
         [Route("Find/{id}")]
-        public FindResponseOrder Find(int id)
+        public FindResponseOrderNumber Find(int id)
         {
             try
             {
-                var response = new FindResponseOrder();
-                var bo = new OrderBusiness();
+                var response = new FindResponseOrderNumber();
+                var bo = new OrderNumberBusiness();
                 response.Result = bo.Find(id);
                 return response;
             }
@@ -120,7 +119,7 @@ namespace ASF.Services.Http
         {
             try
             {
-                var bo = new OrderBusiness();
+                var bo = new OrderNumberBusiness();
                 bo.Remove(id);
             }
             catch (Exception ex)

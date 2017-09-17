@@ -27,16 +27,14 @@ namespace ASF.Data
         /// <returns></returns>
         public OrderNumber Create(OrderNumber orderN)
         {
-            const string sqlStatement = "INSERT INTO dbo.OrderNumber([Number], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
-                "VALUES(@Number, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
+            const string sqlStatement = "INSERT INTO dbo.OrderNumber([Number], [CreatedBy]) " +
+                "VALUES(@Number, @CreatedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
             {
                 db.AddInParameter(cmd, "@Number", DbType.String, orderN.Number);
                 db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, orderN.CreatedBy);
-                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, orderN.ChangedOn);
-                db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, orderN.ChangedBy);
                 // Obtener el valor de la primary key.
                 orderN.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
             }
@@ -52,8 +50,6 @@ namespace ASF.Data
         {
             const string sqlStatement = "UPDATE dbo.OrderNumber " +
                 "SET [Number]=@Number, " +
-                    "[CreatedOn]=@CreatedOn, " +
-                    "[CreatedBy]=@CreatedBy, " +
                     "[ChangedOn]=@ChangedOn, " +
                     "[ChangedBy]=@ChangedBy " +
                 "WHERE [Id]=@Id ";
@@ -62,10 +58,9 @@ namespace ASF.Data
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
             {
                 db.AddInParameter(cmd, "@Number", DbType.String, orderN.Number);
-                db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, orderN.CreatedBy);
                 db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, orderN.ChangedOn);
                 db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, orderN.ChangedBy);
-
+                db.AddInParameter(cmd, "@Id", DbType.Int32, orderN.Id);
                 db.ExecuteNonQuery(cmd);
             }
         }
@@ -92,7 +87,7 @@ namespace ASF.Data
         /// <returns></returns>
         public OrderNumber SelectById(int id)
         {
-            const string sqlStatement = "SELECT [Number], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
+            const string sqlStatement = "SELECT [Id], [Number], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
                 "FROM dbo.OrderNumber WHERE [Id]=@Id ";
 
             OrderNumber orderN = null;
