@@ -259,6 +259,8 @@
     <Compile Include="Areas\Products\ProductsAreaRegistration.cs" />
     <Compile Include="Areas\Ratings\Controllers\RatingController.cs" />
     <Compile Include="Areas\Ratings\RatingsAreaRegistration.cs" />
+    <Compile Include="Areas\Settings\Controllers\SettingController.cs" />
+    <Compile Include="Areas\Settings\SettingsAreaRegistration.cs" />
     <Compile Include="Constants\ExtensionMethods\HtmlLabelExtensions.cs" />
     <Compile Include="Constants\ExtensionMethods\TypeFactory.cs" />
     <Compile Include="Constants\ExtensionMethods\WebGridExtensions.cs" />
@@ -511,6 +513,14 @@
     <Content Include="Areas\Ratings\Views\Rating\Create.cshtml" />
     <Content Include="Areas\Ratings\Views\Rating\Delete.cshtml" />
     <Content Include="Areas\Ratings\Views\Rating\Edit.cshtml" />
+    <Content Include="Areas\Settings\Views\web.config" />
+    <Content Include="Areas\Settings\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Settings\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Settings\Views\Setting\Index.cshtml" />
+    <Content Include="Areas\Settings\Views\Setting\Details.cshtml" />
+    <Content Include="Areas\Settings\Views\Setting\Create.cshtml" />
+    <Content Include="Areas\Settings\Views\Setting\Delete.cshtml" />
+    <Content Include="Areas\Settings\Views\Setting\Edit.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -676,6 +686,7 @@
     <Folder Include="Areas\Orders\Views\OrderDetail\" />
     <Folder Include="Areas\Products\Models\" />
     <Folder Include="Areas\Ratings\Models\" />
+    <Folder Include="Areas\Settings\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

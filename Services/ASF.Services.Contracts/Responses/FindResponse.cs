@@ -94,5 +94,12 @@ namespace ASF.Services.Contracts
         [DataMember]
         public Rating Result { get; set; }
     }
+
+    [DataContract]
+    public class FindResponseSetting
+    {
+        [DataMember]
+        public Setting Result { get; set; }
+    }
 }
 

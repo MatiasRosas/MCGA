@@ -27,8 +27,8 @@ namespace ASF.Data
         /// <returns></returns>
         public Setting Create(Setting setting)
         {
-            const string sqlStatement = "INSERT INTO dbo.Setting ([Name], [Value], [Description], [LastChangeDate], [WebSiteName], [WebSiteUrl], [PageTitle], [AdminEmailAddress], [SMTP], [SMTPUsername], [SMTPPassword], [SMTPPort], [SMTPEnableSSL], [Theme], [DefaultLanguageId], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
-                "VALUES(@Name, @Value, @Description, @LastChangeDate, @WebSiteName, @WebSiteUrl, @PageTitle, @AdminEmailAddress, @SMTP, @SMTPUsername, @SMTPPassword, @SMTPPort, @SMTPEnableSSL, @Theme, @DefaultLanguageId, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
+            const string sqlStatement = "INSERT INTO dbo.Setting ([Name], [Value], [Description], [WebSiteName], [WebSiteUrl], [PageTitle], [AdminEmailAddress], [SMTP], [SMTPUsername], [SMTPPassword], [SMTPPort], [SMTPEnableSSL], [Theme], [DefaultLanguageId], [CreatedBy]) " +
+                "VALUES(@Name, @Value, @Description, @WebSiteName, @WebSiteUrl, @PageTitle, @AdminEmailAddress, @SMTP, @SMTPUsername, @SMTPPassword, @SMTPPort, @SMTPEnableSSL, @Theme, @DefaultLanguageId, @CreatedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
@@ -36,7 +36,6 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@Name", DbType.String, setting.Name);
                 db.AddInParameter(cmd, "@Value", DbType.String, setting.Value);
                 db.AddInParameter(cmd, "@Description", DbType.String, setting.Description);
-                db.AddInParameter(cmd, "@LastChangeDate", DbType.DateTime2, setting.LastChangeDate);
                 db.AddInParameter(cmd, "@WebSiteName", DbType.String, setting.WebSiteName);
                 db.AddInParameter(cmd, "@WebSiteUrl", DbType.String, setting.WebSiteUrl);
                 db.AddInParameter(cmd, "@PageTitle", DbType.String, setting.PageTitle);
@@ -48,10 +47,7 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@SMTPEnableSSL", DbType.Boolean, setting.SMTPEnableSSL);
                 db.AddInParameter(cmd, "@Theme", DbType.String, setting.Theme);
                 db.AddInParameter(cmd, "@DefaultLanguageId", DbType.Int32, setting.DefaultLanguageId);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, setting.CreatedOn);
                 db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, setting.CreatedBy);
-                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, setting.ChangedOn);
-                db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, setting.ChangedBy);
                 // Obtener el valor de la primary key.
                 setting.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
             }
@@ -67,22 +63,19 @@ namespace ASF.Data
         {
             const string sqlStatement = "UPDATE dbo.Setting " +
                 "SET [Name]=@Name, " +
-                    "[Value]=,@Value " +
-                    "[Description]=,@Description " +
-                    "[LastChangeDate]=,@LastChangeDate " +
-                    "[WebSiteName]=,@WebSiteName " +
-                    "[WebSiteUrl]=,@WebSiteUrl " +
-                    "[PageTitle]=,@PageTitle " +
-                    "[AdminEmailAddress]=,@AdminEmailAddress " +
-                    "[SMTP]=,@SMTP " +
-                    "[SMTPUsername]=,@SMTPUsername " +
-                    "[SMTPPassword]=,@SMTPPassword " +
-                    "[SMTPPort]=,@SMTPPort " +
-                    "[SMTPEnableSSL]=,@SMTPEnableSSL " +
-                    "[Theme]=,@Theme " +
-                    "[DefaultLanguageId]=,@DefaultLanguageId " +
-                    "[CreatedOn]=@CreatedOn, " +
-                    "[CreatedBy]=@CreatedBy, " +
+                    "[Value]=@Value, " +
+                    "[Description]=@Description, " +
+                    "[WebSiteName]=@WebSiteName, " +
+                    "[WebSiteUrl]=@WebSiteUrl, " +
+                    "[PageTitle]=@PageTitle, " +
+                    "[AdminEmailAddress]=@AdminEmailAddress, " +
+                    "[SMTP]=@SMTP, " +
+                    "[SMTPUsername]=@SMTPUsername, " +
+                    "[SMTPPassword]=@SMTPPassword, " +
+                    "[SMTPPort]=@SMTPPort, " +
+                    "[SMTPEnableSSL]=@SMTPEnableSSL, " +
+                    "[Theme]=@Theme, " +
+                    "[DefaultLanguageId]=@DefaultLanguageId, " +
                     "[ChangedOn]=@ChangedOn, " +
                     "[ChangedBy]=@ChangedBy " +
                 "WHERE [Id]=@Id ";
@@ -93,7 +86,6 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@Name", DbType.String, setting.Name);
                 db.AddInParameter(cmd, "@Value", DbType.String, setting.Value);
                 db.AddInParameter(cmd, "@Description", DbType.String, setting.Description);
-                db.AddInParameter(cmd, "@LastChangeDate", DbType.DateTime2, setting.LastChangeDate);
                 db.AddInParameter(cmd, "@WebSiteName", DbType.String, setting.WebSiteName);
                 db.AddInParameter(cmd, "@WebSiteUrl", DbType.String, setting.WebSiteUrl);
                 db.AddInParameter(cmd, "@PageTitle", DbType.String, setting.PageTitle);
@@ -105,10 +97,9 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@SMTPEnableSSL", DbType.Boolean, setting.SMTPEnableSSL);
                 db.AddInParameter(cmd, "@Theme", DbType.String, setting.Theme);
                 db.AddInParameter(cmd, "@DefaultLanguageId", DbType.Int32, setting.DefaultLanguageId);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, setting.CreatedOn);
-                db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, setting.CreatedBy);
                 db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, setting.ChangedOn);
                 db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, setting.ChangedBy);
+                db.AddInParameter(cmd, "@Id", DbType.Int32, setting.Id);
 
                 db.ExecuteNonQuery(cmd);
             }
