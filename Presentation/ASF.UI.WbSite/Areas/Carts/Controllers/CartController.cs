@@ -22,9 +22,9 @@ namespace ASF.UI.WbSite.Areas.Carts.Controllers
         public ActionResult Details(int id)
         {
             var cp = new CartProcess();
-            var cat = cp.Find(id);
+            var cart = cp.Find(id);
 
-            return View(cat);
+            return View(cart);
         }
 
         // GET: Carts/Create
@@ -54,9 +54,9 @@ namespace ASF.UI.WbSite.Areas.Carts.Controllers
         public ActionResult Edit(int id)
         {
             var cp = new CartProcess();
-            var cat = cp.Find(id);
+            var cart = cp.Find(id);
 
-            return View(cat);
+            return View(cart);
         }
 
         [HttpPost]

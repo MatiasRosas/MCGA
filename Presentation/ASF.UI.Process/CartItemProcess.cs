@@ -13,16 +13,16 @@ using ASF.UI.Process;
 
 namespace ASF.UI.Process
 {
-    public class CartProcess : ProcessComponent
+    public class CartItemProcess : ProcessComponent
     {
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Cart> SelectList()
+        public List<CartItem> SelectList()
         {
-            var response = HttpGet<AllResponseCart>("rest/Cart/All", new Dictionary<string, object>(), MediaType.Json);
+            var response = HttpGet<AllResponseCartItem>("rest/CartItem/All", new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
         }
 
@@ -30,10 +30,10 @@ namespace ASF.UI.Process
         /// 
         /// </summary>
         /// <returns></returns>
-        public Cart Find(int id)
+        public CartItem Find(int id)
         {
-            var path = "rest/Cart/Find/" + id;
-            var response = HttpGet<FindResponseCart>(path, new Dictionary<string, object>(), MediaType.Json);
+            var path = "rest/CartItem/Find/" + id;
+            var response = HttpGet<FindResponseCartItem>(path, new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
         }
 
@@ -41,9 +41,9 @@ namespace ASF.UI.Process
         /// 
         /// </summary>
         /// <returns></returns>
-        public void Insert(Cart cart)
+        public void Insert(CartItem cartItem)
         {
-            var response = HttpPost<Cart>("rest/Cart/Add", cart, MediaType.Json);
+            var response = HttpPost<CartItem>("rest/CartItem/Add", cartItem, MediaType.Json);
         }
 
         /// <summary>
@@ -52,18 +52,19 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public void Delete(int id)
         {
-            var path = "rest/Cart/Remove/" + id;
-            var response = HttpGet<FindResponseCart>(path, new Dictionary<string, object>(), MediaType.Json);
+            var path = "rest/CartItem/Remove/" + id;
+            var response = HttpGet<FindResponseCartItem>(path, new Dictionary<string, object>(), MediaType.Json);
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public void Edit(Cart cart)
+        public void Edit(CartItem cartItem)
         {
-            var response = HttpPost<Cart>("rest/Cart/Edit", cart, MediaType.Json);
+            var response = HttpPost<CartItem>("rest/CartItem/Edit", cartItem, MediaType.Json);
         }
+
 
     }
 }

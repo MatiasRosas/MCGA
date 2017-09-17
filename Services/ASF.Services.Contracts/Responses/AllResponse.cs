@@ -52,5 +52,12 @@ namespace ASF.Services.Contracts
         [DataMember]
         public List<Cart> Result { get; set; }
     }
+
+    [DataContract]
+    public class AllResponseCartItem
+    {
+        [DataMember]
+        public List<CartItem> Result { get; set; }
+    }
 }
 

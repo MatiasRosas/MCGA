@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CartItemProcess.cs" />
     <Compile Include="CartProcess.cs" />
     <Compile Include="CategoryProcess.cs" />
     <Compile Include="ClientProcess.cs" />

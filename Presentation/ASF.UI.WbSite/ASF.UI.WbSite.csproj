@@ -237,6 +237,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\CartItems\CartItemsAreaRegistration.cs" />
+    <Compile Include="Areas\CartItems\Controllers\CartItemController.cs" />
     <Compile Include="Areas\Carts\CartsAreaRegistration.cs" />
     <Compile Include="Areas\Carts\Controllers\CartController.cs" />
     <Compile Include="Areas\Categories\CategoriesAreaRegistration.cs" />
@@ -451,6 +453,14 @@
     <Content Include="Areas\Carts\Views\Cart\Create.cshtml" />
     <Content Include="Areas\Carts\Views\Cart\Delete.cshtml" />
     <Content Include="Areas\Carts\Views\Cart\Edit.cshtml" />
+    <Content Include="Areas\CartItems\Views\web.config" />
+    <Content Include="Areas\CartItems\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\CartItems\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\CartItems\Views\CartItem\Index.cshtml" />
+    <Content Include="Areas\CartItems\Views\CartItem\Details.cshtml" />
+    <Content Include="Areas\CartItems\Views\CartItem\Create.cshtml" />
+    <Content Include="Areas\CartItems\Views\CartItem\Delete.cshtml" />
+    <Content Include="Areas\CartItems\Views\CartItem\Edit.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -603,6 +613,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\CartItems\Models\" />
     <Folder Include="Areas\Carts\Models\" />
     <Folder Include="Areas\Categories\Controllers\" />
     <Folder Include="Areas\Categories\Models\" />

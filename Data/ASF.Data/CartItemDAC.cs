@@ -30,8 +30,8 @@ namespace ASF.Data
         /// <returns></returns>
         public CartItem Create(CartItem cartitem)
         {
-            const string sqlStatement = "INSERT INTO dbo.CartItem ([CartId], [ProductId], [Price] , [Quantity], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
-                "VALUES(@CartId, @ProductId, @Price, @Quantity, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
+            const string sqlStatement = "INSERT INTO dbo.CartItem ([CartId], [ProductId], [Price] , [Quantity], [CreatedBy]) " +
+                "VALUES(@CartId, @ProductId, @Price, @Quantity, @CreatedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
@@ -40,10 +40,7 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@ProductId", DbType.Int32, cartitem.ProductId);
                 db.AddInParameter(cmd, "@Price", DbType.Decimal, cartitem.Price);
                 db.AddInParameter(cmd, "@Quantity", DbType.Int32, cartitem.Quantity);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, cartitem.CreatedOn);
                 db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, cartitem.CreatedBy);
-                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, cartitem.ChangedOn);
-                db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, cartitem.ChangedBy);
                 // Obtener el valor de la primary key.
                 cartitem.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
             }
@@ -58,12 +55,9 @@ namespace ASF.Data
         public void UpdateById(CartItem cartitem)
         {
             const string sqlStatement = "UPDATE dbo.CartItem " +
-                "SET [CartId]=@CartId, " +
-                    "[ProductId]=@ProductId, " +
+                "SET [ProductId]=@ProductId, " +
                     "[Price]=@Price, " +
-                    "[Quantity]=@Quantity " + 
-                    "[CreatedOn]=@CreatedOn, " +
-                    "[CreatedBy]=@CreatedBy, " +
+                    "[Quantity]=@Quantity, " + 
                     "[ChangedOn]=@ChangedOn, " +
                     "[ChangedBy]=@ChangedBy " +
                 "WHERE [Id]=@Id ";
@@ -75,11 +69,9 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@ProductId", DbType.Int32, cartitem.ProductId);
                 db.AddInParameter(cmd, "@Price", DbType.Decimal, cartitem.Price);
                 db.AddInParameter(cmd, "@Quantity", DbType.Int32, cartitem.Quantity);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, cartitem.CreatedOn);
-                db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, cartitem.CreatedBy);
                 db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, cartitem.ChangedOn);
                 db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, cartitem.ChangedBy);
-
+                db.AddInParameter(cmd, "@Id", DbType.Int32, cartitem.Id);
                 db.ExecuteNonQuery(cmd);
             }
         }
@@ -106,7 +98,7 @@ namespace ASF.Data
         /// <returns></returns>
         public CartItem SelectById(int id)
         {
-            const string sqlStatement = "SELECT [Id], [CartId], [ProductId], [Price] , [Quantity], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
+            const string sqlStatement = "SELECT [Id], [CartId], [ProductId], [Price], [Quantity], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
                 "FROM dbo.CartItem WHERE [Id]=@Id ";
 
             CartItem cartitem = null;
@@ -161,7 +153,7 @@ namespace ASF.Data
                 Id = GetDataValue<int>(dr, "Id"),
                 CartId = GetDataValue<int>(dr, "CartId"),
                 ProductId = GetDataValue<int>(dr, "ProductId"),
-                Price = GetDataValue<float>(dr, "PriceId"),
+                Price = GetDataValue<double>(dr, "Price"),
                 Quantity = GetDataValue<int>(dr, "Quantity"),
                 CreatedOn = GetDataValue<DateTime>(dr, "CreatedOn"),
                 CreatedBy = GetDataValue<int>(dr, "CreatedBy"),
