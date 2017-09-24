@@ -17,6 +17,18 @@
     }
 };
 
+@{ var listadoState = new List<SelectListItem>();
+    foreach (var std in ViewData["State"] as IList<State>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.Description,
+            Value = std.Id.ToString()
+        };
+        listadoState.Add(elemento);
+    }
+};
+
 <h2>Create</h2>
 
 
@@ -48,7 +60,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("Description", listadoState, new { @class = "btn btn-default dropdown-toggle" })
+                @*@Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
             </div>
         </div>

@@ -27,7 +27,7 @@ namespace ASF.Data
         /// <returns></returns>
         public Order Create(Order order)
         {
-            const string sqlStatement = "INSERT INTO dbo.Order ([ClientId], [OrderDate], [TotalPrice], [State], [OrderNumber], [CreatedBy]) " +
+            const string sqlStatement = "INSERT INTO [LeatherGoods].[dbo].[Order] ([ClientId], [OrderDate], [TotalPrice], [State], [OrderNumber], [CreatedBy]) " +
                 "VALUES(@ClientId, @OrderDate, @TotalPrice, @State, @OrderNumber, @CreatedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
@@ -52,7 +52,7 @@ namespace ASF.Data
         /// <param name="order"></param>
         public void UpdateById(Order order)
         {
-            const string sqlStatement = "UPDATE dbo.Order " +
+            const string sqlStatement = "UPDATE [LeatherGoods].[dbo].[Order] " +
                 "SET [ClientId]=@ClientId, " +
                     "[TotalPrice]=@TotalPrice, " +
                     "[State]=@State, " +
@@ -82,7 +82,7 @@ namespace ASF.Data
         /// <param name="id"></param>
         public void DeleteById(int id)
         {
-            const string sqlStatement = "DELETE dbo.Order WHERE [Id]=@Id ";
+            const string sqlStatement = "DELETE [LeatherGoods].[dbo].[Order] WHERE [Id]=@Id ";
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
             {
@@ -99,7 +99,7 @@ namespace ASF.Data
         public Order SelectById(int id)
         {
             const string sqlStatement = "SELECT [Id], [ClientId], [OrderDate], [TotalPrice], [State], [OrderNumber], [ItemCount], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
-                "FROM dbo.Order WHERE [Id]=@Id ";
+                "FROM [LeatherGoods].[dbo].[Order] WHERE [Id]=@Id ";
 
             Order order = null;
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
@@ -122,7 +122,7 @@ namespace ASF.Data
         public List<Order> Select()
         {
             // WARNING! Performance
-            const string sqlStatement = "SELECT [Id], [ClientId], [OrderDate], [TotalPrice], [State], [OrderNumber], [ItemCount], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] FROM dbo.Order";
+            const string sqlStatement = "SELECT [Id], [ClientId], [OrderDate], [TotalPrice], [State], [OrderNumber], [ItemCount], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] FROM [LeatherGoods].[dbo].[Order]";
 
             var result = new List<Order>();
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
@@ -153,7 +153,7 @@ namespace ASF.Data
                 Id = GetDataValue<int>(dr, "Id"),
                 ClientId = GetDataValue<int>(dr, "ClientId"),
                 OrderDate = GetDataValue<DateTime>(dr, "OrderDate"),
-                TotalPrice = GetDataValue<float>(dr, "TotalPrice"),
+                TotalPrice = GetDataValue<double>(dr, "TotalPrice"),
                 State = GetDataValue<string>(dr, "State"),
                 OrderNumber = GetDataValue<int>(dr, "OrderNumber"),
                 ItemCount = GetDataValue<int>(dr, "ItemCount"),

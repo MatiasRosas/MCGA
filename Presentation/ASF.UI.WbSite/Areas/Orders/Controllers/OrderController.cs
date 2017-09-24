@@ -38,6 +38,37 @@ namespace ASF.UI.WbSite.Areas.Orders.Controllers
             var lista = cp.SelectList();
             ViewData["Client"] = lista;
 
+            // se crean los estados válidos para el campo State
+
+            List<State> listaState = new List<State>();
+
+            var state1 = new State();
+            state1.Id = 1;
+            state1.Description = "Reviewed";
+            listaState.Add(state1);
+
+            var state2 = new State();
+            state2.Id = 2;
+            state2.Description = "Suspended";
+            listaState.Add(state2);
+
+            var state3 = new State();
+            state3.Id = 3;
+            state3.Description = "Closed";
+            listaState.Add(state3);
+
+            var state4 = new State();
+            state4.Id = 4;
+            state4.Description = "Cancelled";
+            listaState.Add(state4);
+
+            var state5 = new State();
+            state5.Id = 5;
+            state5.Description = "Approved";
+            listaState.Add(state5);
+
+            ViewData["State"] = listaState;
+
             return View();
         }
 
@@ -68,7 +99,33 @@ namespace ASF.UI.WbSite.Areas.Orders.Controllers
             var lista = cp.SelectList();
             ViewData["Client"] = lista;
 
-            return View();
+            // se crean los estados válidos para el campo State
+
+            List<State> listaState = new List<State>();
+
+            var state = new State();
+
+            state.Id = 1;
+            state.Description = "Reviewed";
+            listaState.Add(state);
+
+            state.Id = 2;
+            state.Description = "Suspended";
+            listaState.Add(state);
+
+            state.Id = 3;
+            state.Description = "Closed";
+            listaState.Add(state);
+
+            state.Id = 4;
+            state.Description = "Cancelled";
+            listaState.Add(state);
+
+            state.Id = 5;
+            state.Description = "Approved";
+            listaState.Add(state);
+
+            ViewData["State"] = listaState;
 
             return View(order);
         }
