@@ -1,8 +1,21 @@
-﻿@model IEnumerable<ASF.Entities.Client>
+﻿@using ASF.Entities
+@model IEnumerable<ASF.Entities.Client>
 
 @{
     ViewBag.Title = "Index";
 }
+
+@{ var listadoCountry = new List<SelectListItem>();
+    foreach (var std in ViewData["Country"] as IList<Country>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.Name,
+            Value = std.Id.ToString()
+        };
+        listadoCountry.Add(elemento);
+    }
+};
 
 <h2>Index</h2>
 
@@ -65,8 +78,9 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
+            @*@Html.DisplayFor(modelItem => listadoCountry.Find(delegate (Country cty) {return cty.Id == item.Id }).Text)*@
             @Html.DisplayFor(modelItem => item.CountryId)
-        </td>
+         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AspNetUsers)
         </td>

@@ -1,8 +1,21 @@
-﻿@model ASF.Entities.Client
+﻿@using ASF.Entities
+@model ASF.Entities.Client
 
 @{
     ViewBag.Title = "Edit";
 }
+
+@{ var listadoCountry = new List<SelectListItem>();
+    foreach (var std in ViewData["Country"] as IList<Country>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.Name,
+            Value = std.Id.ToString()
+        };
+        listadoCountry.Add(elemento);
+    }
+};
 
 <h2>Edit</h2>
 
@@ -44,7 +57,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CountryId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CountryId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("CountryId", listadoCountry, new { @class = "btn btn-default dropdown-toggle" })
+                @*@Html.EditorFor(model => model.CountryId, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
             </div>
         </div>

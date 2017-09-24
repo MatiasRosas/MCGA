@@ -1,8 +1,17 @@
-﻿@model ASF.Entities.Dealer
+﻿@using ASF.Entities
+@model ASF.Entities.Dealer
 
 @{
     ViewBag.Title = "Details";
 }
+
+@{ var Country = ViewData["Country"];
+    var CountryCol = "Country";
+};
+
+@{ var Category = ViewData["Category"];
+    var CategoryCol = "Category";
+};
 
 <h2>Details</h2>
 
@@ -27,19 +36,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CategoryId)
+            @Html.DisplayNameFor(model => CategoryCol)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CategoryId)
+            @Html.DisplayFor(model => Category)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CountryId)
+            @Html.DisplayNameFor(model => CountryCol)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CountryId)
+            @Html.DisplayFor(model => Country)
         </dd>
 
         <dt>

@@ -1,8 +1,13 @@
-﻿@model ASF.Entities.Client
+﻿@using ASF.Entities
+@model ASF.Entities.Client
 
 @{
     ViewBag.Title = "Details";
 }
+
+@{ var Country = ViewData["Country"];
+   var CountryCol = "Country";
+};
 
 <h2>Details</h2>
 
@@ -35,11 +40,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CountryId)
+            @Html.DisplayNameFor(model => CountryCol)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CountryId)
+            @Html.DisplayFor(model => Country)
         </dd>
 
         <dt>

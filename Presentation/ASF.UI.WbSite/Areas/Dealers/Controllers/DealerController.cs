@@ -22,14 +22,30 @@ namespace ASF.UI.WbSite.Areas.Dealers.Controllers
         public ActionResult Details(int id)
         {
             var dp = new DealerProcess();
-            var pais = dp.Find(id);
+            var dealer = dp.Find(id);
 
-            return View(pais);
+            var cop = new CountryProcess();
+            var descCountry = cop.Find(dealer.CountryId);
+            ViewData["Country"] = descCountry.Name;
+
+            var cap = new CategoryProcess();
+            var descCategory = cap.Find(dealer.CategoryId);
+            ViewData["Category"] = descCategory.Name;
+
+            return View(dealer);
         }
 
         // GET: Dealers/Create
         public ActionResult Create()
         {
+            var cop = new CountryProcess();
+            var listaCountry = cop.SelectList();
+            ViewData["Country"] = listaCountry;
+
+            var cap = new CategoryProcess();
+            var listaCategory = cap.SelectList();
+            ViewData["Category"] = listaCategory;
+
             return View();
         }
 
@@ -55,6 +71,14 @@ namespace ASF.UI.WbSite.Areas.Dealers.Controllers
         {
             var dp = new DealerProcess();
             var dealer = dp.Find(id);
+
+            var cop = new CountryProcess();
+            var listaCountry = cop.SelectList();
+            ViewData["Country"] = listaCountry;
+
+            var cap = new CategoryProcess();
+            var listaCategory = cap.SelectList();
+            ViewData["Category"] = listaCategory;
 
             return View(dealer);
         }
