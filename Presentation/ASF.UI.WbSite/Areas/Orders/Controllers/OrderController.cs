@@ -24,12 +24,20 @@ namespace ASF.UI.WbSite.Areas.Orders.Controllers
             var op = new OrderProcess();
             var order = op.Find(id);
 
+            var cp = new ClientProcess();
+            var descClient = cp.Find(order.ClientId);
+            ViewData["Client"] = descClient.FirstName + " " + descClient.LastName;
+
             return View(order);
         }
 
         // GET: Orders/Create
         public ActionResult Create()
         {
+            var cp = new ClientProcess();
+            var lista = cp.SelectList();
+            ViewData["Client"] = lista;
+
             return View();
         }
 
@@ -55,6 +63,12 @@ namespace ASF.UI.WbSite.Areas.Orders.Controllers
         {
             var op = new OrderProcess();
             var order = op.Find(id);
+
+            var cp = new ClientProcess();
+            var lista = cp.SelectList();
+            ViewData["Client"] = lista;
+
+            return View();
 
             return View(order);
         }

@@ -1,8 +1,13 @@
-﻿@model ASF.Entities.Product
+﻿@using ASF.Entities
+@model ASF.Entities.Product
 
 @{
     ViewBag.Title = "Details";
 }
+
+@{ var Dealer = ViewData["Dealer"];
+    var DealerCol = "Dealer";
+};
 
 <h2>Details</h2>
 
@@ -27,11 +32,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DealerId)
+            @Html.DisplayNameFor(model => DealerCol)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DealerId)
+            @Html.DisplayFor(model => Dealer)
         </dd>
 
         <dt>

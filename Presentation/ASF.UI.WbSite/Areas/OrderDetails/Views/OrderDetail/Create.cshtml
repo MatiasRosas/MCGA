@@ -1,8 +1,33 @@
-﻿@model ASF.Entities.OrderDetail
+﻿@using ASF.Entities
+@model ASF.Entities.OrderDetail
 
 @{
     ViewBag.Title = "Create";
 }
+
+@{ var listadoOrder = new List<SelectListItem>();
+    foreach (var std in ViewData["Order"] as IList<Order>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.Id.ToString(),
+            Value = std.Id.ToString()
+        };
+        listadoOrder.Add(elemento);
+    }
+};
+
+@{ var listadoProduct = new List<SelectListItem>();
+    foreach (var std in ViewData["Product"] as IList<Product>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.Description,
+            Value = std.Id.ToString()
+        };
+        listadoProduct.Add(elemento);
+    }
+};
 
 <h2>Create</h2>
 
@@ -18,7 +43,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.OrderId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.OrderId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("OrderId", listadoOrder, new { @class = "btn btn-default dropdown-toggle" })
+                @*@Html.EditorFor(model => model.OrderId, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.OrderId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -26,7 +52,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ProductId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ProductId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("ProductId", listadoProduct, new { @class = "btn btn-default dropdown-toggle" })
+                @*@Html.EditorFor(model => model.ProductId, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
             </div>
         </div>

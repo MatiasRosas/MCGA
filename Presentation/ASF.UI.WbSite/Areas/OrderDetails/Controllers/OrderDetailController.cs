@@ -22,14 +22,26 @@ namespace ASF.UI.WbSite.Areas.OrderDetails.Controllers
         public ActionResult Details(int id)
         {
             var op = new OrderDetailProcess();
-            var order = op.Find(id);
+            var orderItem = op.Find(id);
 
-            return View(order);
+            var pp = new ProductProcess();
+            var descProd = pp.Find(orderItem.ProductId);
+            ViewData["Product"] = descProd.Description;
+
+            return View(orderItem);
         }
 
         // GET: OrderDetails/Create
         public ActionResult Create()
         {
+            var op = new OrderProcess();
+            var listaOrder = op.SelectList();
+            ViewData["Order"] = listaOrder;
+
+            var pp = new ProductProcess();
+            var listaProd = pp.SelectList();
+            ViewData["Product"] = listaProd;
+
             return View();
         }
 
@@ -53,10 +65,18 @@ namespace ASF.UI.WbSite.Areas.OrderDetails.Controllers
         // GET: OrderDetails/Edit
         public ActionResult Edit(int id)
         {
-            var op = new OrderDetailProcess();
-            var order = op.Find(id);
+            var oip = new OrderDetailProcess();
+            var orderItem = oip.Find(id);
 
-            return View(order);
+            var op = new OrderProcess();
+            var listaOrder = op.SelectList();
+            ViewData["Order"] = listaOrder;
+
+            var pp = new ProductProcess();
+            var listaProd = pp.SelectList();
+            ViewData["Product"] = listaProd;
+
+            return View(orderItem);
         }
 
         [HttpPost]

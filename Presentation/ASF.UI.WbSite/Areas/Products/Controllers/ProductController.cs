@@ -24,6 +24,10 @@ namespace ASF.UI.WbSite.Areas.Products.Controllers
             var pp = new ProductProcess();
             var prd = pp.Find(id);
 
+            var dp = new DealerProcess();
+            var descDealer = dp.Find(prd.DealerId);
+            ViewData["Dealer"] = descDealer.FirstName + " " + descDealer.LastName;
+
             return View(prd);
         }
 
