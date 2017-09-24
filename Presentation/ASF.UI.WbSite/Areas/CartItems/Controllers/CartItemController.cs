@@ -30,6 +30,10 @@ namespace ASF.UI.WbSite.Areas.CartItems.Controllers
         // GET: CartsItem/Create
         public ActionResult Create()
         {
+            var cp = new CartProcess();
+            var lista = cp.SelectList();
+            ViewData["Cart"] = lista;
+
             return View();
         }
 
@@ -53,8 +57,12 @@ namespace ASF.UI.WbSite.Areas.CartItems.Controllers
         // GET: CartsItem/Edit
         public ActionResult Edit(int id)
         {
-            var cp = new CartItemProcess();
-            var cartItem = cp.Find(id);
+            var cip = new CartItemProcess();
+            var cartItem = cip.Find(id);
+
+            var cp = new CartProcess();
+            var lista = cp.SelectList();
+            ViewData["Cart"] = lista;
 
             return View(cartItem);
         }
