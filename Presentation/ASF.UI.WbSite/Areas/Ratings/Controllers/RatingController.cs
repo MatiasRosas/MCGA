@@ -24,12 +24,28 @@ namespace ASF.UI.WbSite.Areas.Ratings.Controllers
             var rp = new RatingProcess();
             var rtng = rp.Find(id);
 
+            var cp = new ClientProcess();
+            var descClient = cp.Find(rtng.ClientId);
+            ViewData["Client"] = descClient.FirstName + " " + descClient.LastName;
+
+            var pp = new ProductProcess();
+            var descProd = pp.Find(rtng.ProductId);
+            ViewData["Product"] = descProd.Description;
+
             return View(rtng);
         }
 
         // GET: Ratings/Create
         public ActionResult Create()
         {
+            var cp = new ClientProcess();
+            var listaClient = cp.SelectList();
+            ViewData["Client"] = listaClient;
+
+            var pp = new ProductProcess();
+            var listaProd = pp.SelectList();
+            ViewData["Product"] = listaProd;
+
             return View();
         }
 
@@ -55,6 +71,14 @@ namespace ASF.UI.WbSite.Areas.Ratings.Controllers
         {
             var rp = new RatingProcess();
             var rtng = rp.Find(id);
+
+            var cp = new ClientProcess();
+            var listaClient = cp.SelectList();
+            ViewData["Client"] = listaClient;
+
+            var pp = new ProductProcess();
+            var listaProd = pp.SelectList();
+            ViewData["Product"] = listaProd;
 
             return View(rtng);
         }

@@ -1,8 +1,17 @@
-﻿@model ASF.Entities.Rating
+﻿@using ASF.Entities
+@model ASF.Entities.Rating
 
 @{
     ViewBag.Title = "Details";
 }
+
+@{ var Client = ViewData["Client"];
+    var ClientCol = "Client";
+};
+
+@{ var Product = ViewData["Product"];
+    var ProductCol = "Product";
+};
 
 <h2>Details</h2>
 
@@ -11,19 +20,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ClientId)
+            @Html.DisplayNameFor(model => ClientCol)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ClientId)
+            @Html.DisplayFor(model => Client)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ProductId)
+            @Html.DisplayNameFor(model => ProductCol)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ProductId)
+            @Html.DisplayFor(model => Product)
         </dd>
 
         <dt>
