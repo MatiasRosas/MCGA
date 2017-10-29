@@ -37,6 +37,7 @@ namespace ASF.UI.WbSite.Areas.LocaleResourceKeys.Controllers
         // POST: LocaleResourceKeys/Create
         public ActionResult Create(LocaleResourceKey locres)
         {
+            locres.DateAdded = DateTime.Now;
             var lrp = new LocaleResourceKeyProcess();
             lrp.Insert(locres);
             return RedirectToAction("Index");

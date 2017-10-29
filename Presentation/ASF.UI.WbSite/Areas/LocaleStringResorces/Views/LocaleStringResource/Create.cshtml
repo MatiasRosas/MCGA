@@ -1,8 +1,33 @@
-﻿@model ASF.Entities.LocaleStringResource
+﻿@using ASF.Entities
+@model ASF.Entities.LocaleStringResource
 
 @{
     ViewBag.Title = "Create";
 }
+
+@{ var listadoLanguages = new List<SelectListItem>();
+    foreach (var std in ViewData["Language"] as IList<Language>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.Name,
+            Value = std.Id.ToString()
+        };
+        listadoLanguages.Add(elemento);
+    }
+};
+
+@{ var listadoLocRes = new List<SelectListItem>();
+    foreach (var std in ViewData["LocRes"] as IList<LocaleResourceKey>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.Name,
+            Value = std.Id.ToString()
+        };
+        listadoLocRes.Add(elemento);
+    }
+};
 
 <h2>Create</h2>
 
@@ -26,7 +51,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.LocaleResourceKey_Id, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LocaleResourceKey_Id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("LocaleResourceKey_Id", listadoLocRes, new { @class = "btn btn-default dropdown-toggle" })
+                @*@Html.EditorFor(model => model.LocaleResourceKey_Id, new { htmlAttributes = new { @class = "form-control" }*@ })
                 @Html.ValidationMessageFor(model => model.LocaleResourceKey_Id, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -34,7 +60,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Language_Id, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Language_Id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("Language_Id", listadoLanguages, new { @class = "btn btn-default dropdown-toggle" })
+                @*@Html.EditorFor(model => model.Language_Id, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.Language_Id, "", new { @class = "text-danger" })
             </div>
         </div>

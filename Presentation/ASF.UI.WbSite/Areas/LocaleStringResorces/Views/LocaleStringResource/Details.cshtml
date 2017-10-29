@@ -4,6 +4,14 @@
     ViewBag.Title = "Details";
 }
 
+@{ var Language = ViewData["Language"];
+    var LanguageCol = "Language";
+};
+
+@{ var LocRes = ViewData["LocRes"];
+    var LocResCol = "LocRes";
+};
+
 <h2>Details</h2>
 
 <div>
@@ -19,19 +27,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LocaleResourceKey_Id)
+            @Html.DisplayNameFor(model => LocResCol)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LocaleResourceKey_Id)
+            @Html.DisplayFor(model => LocRes)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Language_Id)
+            @Html.DisplayNameFor(model => LanguageCol)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Language_Id)
+            @Html.DisplayFor(model => Language)
         </dd>
 
     </dl>

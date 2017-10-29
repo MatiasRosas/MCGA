@@ -1,8 +1,33 @@
-﻿@model IEnumerable<ASF.Entities.LocaleStringResource>
+﻿@using ASF.Entities
+@model IEnumerable<ASF.Entities.LocaleStringResource>
 
 @{
     ViewBag.Title = "Index";
 }
+
+@{ var listadoLanguages = new List<SelectListItem>();
+    foreach (var std in ViewData["Language"] as IList<Language>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.Name,
+            Value = std.Id.ToString()
+        };
+        listadoLanguages.Add(elemento);
+    }
+};
+
+@{ var listadoLocRes = new List<SelectListItem>();
+    foreach (var std in ViewData["LocRes"] as IList<LocaleResourceKey>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.Name,
+            Value = std.Id.ToString()
+        };
+        listadoLocRes.Add(elemento);
+    }
+};
 
 <h2>Index</h2>
 
