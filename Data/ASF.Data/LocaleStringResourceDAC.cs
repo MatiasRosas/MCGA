@@ -54,7 +54,7 @@ namespace ASF.Data
             const string sqlStatement = @"
             UPDATE [dbo].[LocaleStringResource]
             SET [ResourceValue] = @ResourceValue
-            ,[LocaleResourceKey_Id] = @LocaleResourceKey
+            ,[LocaleResourceKey_Id] = @LocaleResourceKey_Id
             ,[Language_Id] = @Language_Id
             WHERE [Id]=@Id ";
 

@@ -1,8 +1,14 @@
 ﻿@using ASF.Entities
+@using ASF.Framework.Localization
+
 @model ASF.Entities.Product
 
-@{
+@*@{
     ViewBag.Title = "Create";
+}*@
+
+@{
+    ViewBag.Title = "Create %Product%".Translated();
 }
 
 @{ var listadoDealer = new List<SelectListItem>();

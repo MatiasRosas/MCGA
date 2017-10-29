@@ -731,6 +731,10 @@
       <Project>{5f7c08e8-891e-41c7-9e8d-e94b75222c0b}</Project>
       <Name>ASF.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Shared\ASF.Framework\ASF.Framework.csproj">
+      <Project>{b07faacc-7f82-4fdb-9bbb-666711eef0f4}</Project>
+      <Name>ASF.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ASF.UI.Process\ASF.UI.Process.csproj">
       <Project>{16102133-b8dc-4516-b714-c2802ecfa923}</Project>
       <Name>ASF.UI.Process</Name>
