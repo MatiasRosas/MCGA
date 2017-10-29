@@ -41,6 +41,17 @@ namespace ASF.UI.Process
         /// 
         /// </summary>
         /// <returns></returns>
+        public List<LocaleStringResource> FindByLang(int id)
+        {
+            var path = "rest/LocaleStringResource/FindByLang/" + id;
+            var response = HttpGet<AllResponseLocaleStringResource>(path, new Dictionary<string, object>(), MediaType.Json);
+            return response.Result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public void Insert(LocaleStringResource locstr)
         {
             var response = HttpPost<LocaleStringResource>("rest/LocaleStringResource/Add", locstr, MediaType.Json);

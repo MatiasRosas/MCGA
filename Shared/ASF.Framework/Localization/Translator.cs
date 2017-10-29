@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Globalization;
 using ASF.Entities;
-using ASF.Business;
+using ASF.UI.Process;
 using System.Web;
 
 namespace ASF.Framework.Localization
@@ -98,21 +98,31 @@ namespace ASF.Framework.Localization
         #region Abstracciones de Datos
         private static Language ObtenerIdioma(string languageCulture)
         {
-            LanguageBusiness langBus = new LanguageBusiness();
 
-            return langBus.FindByLangCulture(languageCulture);
+            LanguageProcess langBus = new LanguageProcess();
+            return langBus.FindByLang(languageCulture);
+
+            //LanguageBusiness langBus = new LanguageBusiness();
+            //return langBus.FindByLangCulture(languageCulture);
         }
 
         private static List<LocaleResourceKey> ObtenerKeys()
         {
-            LocaleResourceKeyBusiness locresBus = new LocaleResourceKeyBusiness();
-            return locresBus.All();
+
+            LocaleResourceKeyProcess locresPro = new LocaleResourceKeyProcess();
+            return locresPro.SelectList();
+
+            //LocaleResourceKeyBusiness locresBus = new LocaleResourceKeyBusiness();
+            //return locresBus.All();
         }
 
         private static List<LocaleStringResource> ObtenerResourcesPorIdioma(Language language)
         {
-            LocaleStringResourceBusiness locstrBus = new LocaleStringResourceBusiness();
+            LocaleStringResourceProcess locstrBus = new LocaleStringResourceProcess();
             return locstrBus.FindByLang(language.Id);
+
+            //LocaleStringResourceBusiness locstrBus = new LocaleStringResourceBusiness();
+            //return locstrBus.FindByLang(language.Id);
         }
         #endregion
 

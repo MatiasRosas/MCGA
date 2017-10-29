@@ -114,6 +114,29 @@ namespace ASF.Services.Http
         }
 
         [HttpGet]
+        [Route("FindByLang/{id}")]
+        public AllResponseLocaleStringResource FindByLang(int id)
+        {
+            try
+            {
+                var response = new AllResponseLocaleStringResource();
+                var bls = new LocaleStringResourceBusiness();
+                response.Result = bls.FindByLang(id);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                var httpError = new HttpResponseMessage()
+                {
+                    StatusCode = (HttpStatusCode)422,
+                    ReasonPhrase = ex.Message
+                };
+
+                throw new HttpResponseException(httpError);
+            }
+        }
+
+        [HttpGet]
         [Route("Remove/{id}")]
         public void Remove(int id)
         {

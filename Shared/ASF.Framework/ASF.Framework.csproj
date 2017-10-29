@@ -65,9 +65,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Business\ASF.Business\ASF.Business.csproj">
-      <Project>{1290a947-f5d1-45b8-b19a-e0f9185de46b}</Project>
-      <Name>ASF.Business</Name>
+    <ProjectReference Include="..\..\Presentation\ASF.UI.Process\ASF.UI.Process.csproj">
+      <Project>{16102133-b8dc-4516-b714-c2802ecfa923}</Project>
+      <Name>ASF.UI.Process</Name>
     </ProjectReference>
     <ProjectReference Include="..\ASF.Entities\ASF.Entities.csproj">
       <Project>{5f7c08e8-891e-41c7-9e8d-e94b75222c0b}</Project>

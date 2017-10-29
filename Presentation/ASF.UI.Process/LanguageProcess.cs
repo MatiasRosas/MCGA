@@ -41,6 +41,17 @@ namespace ASF.UI.Process
         /// 
         /// </summary>
         /// <returns></returns>
+        public Language FindByLang(string id)
+        {
+            var path = "rest/Language/FindByLang/" + id;
+            var response = HttpGet<FindResponseLanguage>(path, new Dictionary<string, object>(), MediaType.Json);
+            return response.Result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public void Insert(Language lang)
         {
             var response = HttpPost<Language>("rest/Language/Add", lang, MediaType.Json);

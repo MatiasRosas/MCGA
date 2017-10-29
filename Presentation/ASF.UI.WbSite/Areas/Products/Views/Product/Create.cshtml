@@ -3,13 +3,13 @@
 
 @model ASF.Entities.Product
 
-@*@{
-    ViewBag.Title = "Create";
-}*@
-
 @{
-    ViewBag.Title = "Create %Product%".Translated();
+    ViewBag.Title = "Create";
 }
+
+@*@{
+    ViewBag.Title = "Create %Product%".Translated();
+}*@
 
 @{ var listadoDealer = new List<SelectListItem>();
     foreach (var std in ViewData["Dealer"] as IList<Dealer>)
