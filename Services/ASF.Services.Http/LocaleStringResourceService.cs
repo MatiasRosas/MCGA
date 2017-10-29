@@ -17,6 +17,11 @@ using ASF.Services.Contracts;
 
 namespace ASF.Services.Http
 {
+    /// <summary>
+    /// LocaleStringResource HTTP service controller.
+    /// </summary>
+    [RoutePrefix("rest/LocStr")]
+
     public class LocaleStringResourceService : ApiController
     {
 

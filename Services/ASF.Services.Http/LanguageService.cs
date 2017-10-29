@@ -17,6 +17,11 @@ using ASF.Services.Contracts;
 
 namespace ASF.Services.Http
 {
+    /// <summary>
+    /// Language HTTP service controller.
+    /// </summary>
+    [RoutePrefix("rest/Language")]
+
     public class LanguageService : ApiController
     {
 

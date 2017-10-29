@@ -50,6 +50,9 @@
     <Compile Include="ClientProcess.cs" />
     <Compile Include="CountryProcess.cs" />
     <Compile Include="DealerProcess.cs" />
+    <Compile Include="LanguageProcess.cs" />
+    <Compile Include="LocaleResourceKeyProcess.cs" />
+    <Compile Include="LocaleStringResourceProcess.cs" />
     <Compile Include="MediaType.cs" />
     <Compile Include="OrderDetailProcess.cs" />
     <Compile Include="OrderNumberProcess.cs" />
