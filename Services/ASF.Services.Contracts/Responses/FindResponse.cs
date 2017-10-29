@@ -101,5 +101,26 @@ namespace ASF.Services.Contracts
         [DataMember]
         public Setting Result { get; set; }
     }
+
+    [DataContract]
+    public class FindResponseLanguage
+    {
+        [DataMember]
+        public Language Result { get; set; }
+    }
+
+    [DataContract]
+    public class FindResponseLocaleStringResource
+    {
+        [DataMember]
+        public LocaleStringResource Result { get; set; }
+    }
+
+    [DataContract]
+    public class FindResponseLocaleResourceKey
+    {
+        [DataMember]
+        public LocaleResourceKey Result { get; set; }
+    }
 }
 

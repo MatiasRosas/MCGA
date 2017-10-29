@@ -101,5 +101,26 @@ namespace ASF.Services.Contracts
         [DataMember]
         public List<Setting> Result { get; set; }
     }
+
+    [DataContract]
+    public class AllResponseLanguage
+    {
+        [DataMember]
+        public List<Language> Result { get; set; }
+    }
+
+    [DataContract]
+    public class AllResponseLocaleStringResource
+    {
+        [DataMember]
+        public List<LocaleStringResource> Result { get; set; }
+    }
+
+    [DataContract]
+    public class AllResponseLocaleResourceKey
+    {
+        [DataMember]
+        public List<LocaleResourceKey> Result { get; set; }
+    }
 }
 
