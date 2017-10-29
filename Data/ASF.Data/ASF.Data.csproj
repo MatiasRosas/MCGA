@@ -54,6 +54,9 @@
     <Compile Include="CountryDAC.cs" />
     <Compile Include="DataAccessComponent.cs" />
     <Compile Include="DealerDAC.cs" />
+    <Compile Include="LanguageDAC.cs" />
+    <Compile Include="LocaleResourceKeyDAC.cs" />
+    <Compile Include="LocaleStringResourceDAC.cs" />
     <Compile Include="OrderDAC.cs" />
     <Compile Include="OrderDetailDAC.cs" />
     <Compile Include="OrderNumberDAC.cs" />
