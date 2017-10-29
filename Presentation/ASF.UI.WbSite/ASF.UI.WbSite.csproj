@@ -249,6 +249,12 @@
     <Compile Include="Areas\Countries\CountriesAreaRegistration.cs" />
     <Compile Include="Areas\Dealers\Controllers\DealerController.cs" />
     <Compile Include="Areas\Dealers\DealersAreaRegistration.cs" />
+    <Compile Include="Areas\Languages\Controllers\LanguageController.cs" />
+    <Compile Include="Areas\Languages\LanguagesAreaRegistration.cs" />
+    <Compile Include="Areas\LocaleResourceKeys\Controllers\LocaleResourceKeyController.cs" />
+    <Compile Include="Areas\LocaleResourceKeys\LocaleResourceKeysAreaRegistration.cs" />
+    <Compile Include="Areas\LocaleStringResorces\Controllers\LocaleStringResourceController.cs" />
+    <Compile Include="Areas\LocaleStringResorces\LocaleStringResorcesAreaRegistration.cs" />
     <Compile Include="Areas\OrderDetails\Controllers\OrderDetailController.cs" />
     <Compile Include="Areas\OrderDetails\OrderDetailsAreaRegistration.cs" />
     <Compile Include="Areas\OrderNumbers\Controllers\OrderNumberController.cs" />
@@ -521,6 +527,30 @@
     <Content Include="Areas\Settings\Views\Setting\Create.cshtml" />
     <Content Include="Areas\Settings\Views\Setting\Delete.cshtml" />
     <Content Include="Areas\Settings\Views\Setting\Edit.cshtml" />
+    <Content Include="Areas\Languages\Views\web.config" />
+    <Content Include="Areas\Languages\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Languages\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Languages\Views\Language\Index.cshtml" />
+    <Content Include="Areas\Languages\Views\Language\Details.cshtml" />
+    <Content Include="Areas\Languages\Views\Language\Create.cshtml" />
+    <Content Include="Areas\Languages\Views\Language\Delete.cshtml" />
+    <Content Include="Areas\Languages\Views\Language\Edit.cshtml" />
+    <Content Include="Areas\LocaleStringResorces\Views\web.config" />
+    <Content Include="Areas\LocaleResourceKeys\Views\web.config" />
+    <Content Include="Areas\LocaleStringResorces\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\LocaleStringResorces\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\LocaleStringResorces\Views\LocaleStringResource\Index.cshtml" />
+    <Content Include="Areas\LocaleStringResorces\Views\LocaleStringResource\Details.cshtml" />
+    <Content Include="Areas\LocaleStringResorces\Views\LocaleStringResource\Create.cshtml" />
+    <Content Include="Areas\LocaleStringResorces\Views\LocaleStringResource\Delete.cshtml" />
+    <Content Include="Areas\LocaleStringResorces\Views\LocaleStringResource\Edit.cshtml" />
+    <Content Include="Areas\LocaleResourceKeys\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\LocaleResourceKeys\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\LocaleResourceKeys\Views\LocaleResourceKey\Index.cshtml" />
+    <Content Include="Areas\LocaleResourceKeys\Views\LocaleResourceKey\Details.cshtml" />
+    <Content Include="Areas\LocaleResourceKeys\Views\LocaleResourceKey\Create.cshtml" />
+    <Content Include="Areas\LocaleResourceKeys\Views\LocaleResourceKey\Delete.cshtml" />
+    <Content Include="Areas\LocaleResourceKeys\Views\LocaleResourceKey\Edit.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -680,6 +710,9 @@
     <Folder Include="Areas\Clients\Models\" />
     <Folder Include="Areas\Countries\Models\" />
     <Folder Include="Areas\Dealers\Models\" />
+    <Folder Include="Areas\Languages\Models\" />
+    <Folder Include="Areas\LocaleResourceKeys\Models\" />
+    <Folder Include="Areas\LocaleStringResorces\Models\" />
     <Folder Include="Areas\OrderDetails\Models\" />
     <Folder Include="Areas\OrderNumbers\Models\" />
     <Folder Include="Areas\Orders\Models\" />

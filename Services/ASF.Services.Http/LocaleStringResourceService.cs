@@ -20,7 +20,7 @@ namespace ASF.Services.Http
     /// <summary>
     /// LocaleStringResource HTTP service controller.
     /// </summary>
-    [RoutePrefix("rest/LocStr")]
+    [RoutePrefix("rest/LocaleStringResource")]
 
     public class LocaleStringResourceService : ApiController
     {

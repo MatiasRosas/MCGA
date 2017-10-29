@@ -22,7 +22,7 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public List<LocaleStringResource> SelectList()
         {
-            var response = HttpGet<AllResponseLocaleStringResource>("rest/LocStr/All", new Dictionary<string, object>(), MediaType.Json);
+            var response = HttpGet<AllResponseLocaleStringResource>("rest/LocaleStringResource/All", new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
         }
 
@@ -32,7 +32,7 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public LocaleStringResource Find(int id)
         {
-            var path = "rest/LocStr/Find/" + id;
+            var path = "rest/LocaleStringResource/Find/" + id;
             var response = HttpGet<FindResponseLocaleStringResource>(path, new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
         }
@@ -43,7 +43,7 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public void Insert(LocaleStringResource locstr)
         {
-            var response = HttpPost<LocaleStringResource>("rest/LocStr/Add", locstr, MediaType.Json);
+            var response = HttpPost<LocaleStringResource>("rest/LocaleStringResource/Add", locstr, MediaType.Json);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public void Delete(int id)
         {
-            var path = "rest/LocStr/Remove/" + id;
+            var path = "rest/LocaleStringResource/Remove/" + id;
             var response = HttpGet<FindResponseLocaleStringResource>(path, new Dictionary<string, object>(), MediaType.Json);
         }
 
@@ -62,7 +62,7 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public void Edit(LocaleStringResource locstr)
         {
-            var response = HttpPost<LocaleStringResource>("rest/LocStr/Edit", locstr, MediaType.Json);
+            var response = HttpPost<LocaleStringResource>("rest/LocaleStringResource/Edit", locstr, MediaType.Json);
         }
 
     }

@@ -22,7 +22,7 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public List<LocaleResourceKey> SelectList()
         {
-            var response = HttpGet<AllResponseLocaleResourceKey>("rest/LocRes/All", new Dictionary<string, object>(), MediaType.Json);
+            var response = HttpGet<AllResponseLocaleResourceKey>("rest/LocaleResourceKey/All", new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
         }
 
@@ -32,7 +32,7 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public LocaleResourceKey Find(int id)
         {
-            var path = "rest/LocRes/Find/" + id;
+            var path = "rest/LocaleResourceKey/Find/" + id;
             var response = HttpGet<FindResponseLocaleResourceKey>(path, new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
         }
@@ -43,7 +43,7 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public void Insert(LocaleResourceKey locres)
         {
-            var response = HttpPost<LocaleResourceKey>("rest/LocRes/Add", locres, MediaType.Json);
+            var response = HttpPost<LocaleResourceKey>("rest/LocaleResourceKey/Add", locres, MediaType.Json);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public void Delete(int id)
         {
-            var path = "rest/LocRes/Remove/" + id;
+            var path = "rest/LocaleResourceKey/Remove/" + id;
             var response = HttpGet<FindResponseLocaleResourceKey>(path, new Dictionary<string, object>(), MediaType.Json);
         }
 
@@ -62,7 +62,7 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public void Edit(LocaleResourceKey locres)
         {
-            var response = HttpPost<LocaleResourceKey>("rest/LocRes/Edit", locres, MediaType.Json);
+            var response = HttpPost<LocaleResourceKey>("rest/LocaleResourceKey/Edit", locres, MediaType.Json);
         }
 
     }

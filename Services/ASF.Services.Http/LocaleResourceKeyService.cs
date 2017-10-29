@@ -20,7 +20,7 @@ namespace ASF.Services.Http
     /// <summary>
     /// LocaleResourceKey HTTP service controller.
     /// </summary>
-    [RoutePrefix("rest/LocRes")]
+    [RoutePrefix("rest/LocaleResourceKey")]
 
     public class LocaleResourceKeyService : ApiController
     {
