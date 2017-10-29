@@ -20,7 +20,7 @@ namespace ASF.Data
     public class LanguageDAC : DataAccessComponent
     {
 
-        public Language CreateLanguage(Language language)
+        public Language Create(Language language)
         {
             const string sqlStatement = @"
            INSERT INTO[dbo].[Language]

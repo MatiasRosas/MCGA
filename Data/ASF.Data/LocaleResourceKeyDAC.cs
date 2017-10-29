@@ -19,7 +19,7 @@ namespace ASF.Data
 {
     public class LocaleResourceKeyDAC : DataAccessComponent
     {
-        public LocaleResourceKey CreateLocaleResourceKey(LocaleResourceKey localeResourceKey)
+        public LocaleResourceKey Create(LocaleResourceKey localeResourceKey)
         {
             const string sqlStatement = @"
         INSERT INTO [dbo].[LocaleResourceKey]

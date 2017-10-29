@@ -19,7 +19,7 @@ namespace ASF.Data
 {
     public class LocaleStringResourceDAC : DataAccessComponent
     {
-        public LocaleStringResource CreateLocaleStringResource(LocaleStringResource localeStringResource)
+        public LocaleStringResource Create(LocaleStringResource localeStringResource)
         {
             const string sqlStatement = @"
             INSERT INTO [dbo].[LocaleStringResource]
@@ -160,6 +160,38 @@ namespace ASF.Data
                     {
                         var localeStringResource = LoadLocaleStringResource(dr); // Mapper
                         result.Add(localeStringResource);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>		
+        public List<LocaleStringResource> Select()
+        {
+            // WARNING! Performance
+            const string sqlStatement = @"
+                  SELECT [Id]
+                  ,[ResourceValue]
+                  ,[LocaleResourceKey_Id]
+                  ,[Language_Id]
+                  FROM [dbo].[LocaleStringResource]";
+
+
+            var result = new List<LocaleStringResource>();
+            var db = DatabaseFactory.CreateDatabase(ConnectionName);
+            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            {
+                using (var dr = db.ExecuteReader(cmd))
+                {
+                    while (dr.Read())
+                    {
+                        var localeResourceKey = LoadLocaleStringResource(dr); // Mapper
+                        result.Add(localeResourceKey);
                     }
                 }
             }

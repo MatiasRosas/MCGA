@@ -46,6 +46,9 @@
     <Compile Include="ClientBusiness.cs" />
     <Compile Include="CountryBusiness.cs" />
     <Compile Include="DealerBusiness.cs" />
+    <Compile Include="LanguageBusiness.cs" />
+    <Compile Include="LocaleResourceKeyBusiness.cs" />
+    <Compile Include="LocaleStringResourceBusiness.cs" />
     <Compile Include="OrderBusiness.cs" />
     <Compile Include="OrderDetailBusiness.cs" />
     <Compile Include="OrderNumberBusiness.cs" />
